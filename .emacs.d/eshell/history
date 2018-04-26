@@ -1,0 +1,128 @@
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java
+javac Assignment2.java
+javac Assignment2.java
+javac Assignment2.java
+javac Assignment2.java
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java
+javac Assignment2.java
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java
+javac Assignment2.java
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+cd ..                                           ^
+cd ..
+cd Assignment1/
+javac Assignment1.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment1 
+cd ../Assignment2/
+clear
+javac Assignment1.java 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+Welcome to the Emacs shell
+clear
+cls
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+javac Assignment2.java 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+Writer connection established.
+javac Assignment2.java 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+Materials
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+Consumer Staples
+javac Assignment2.java 
+javac Assignment2.java 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+javac Assignment2.java 
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
+cd CSCI\ 330/Assignment2/
+javac Assignment2.java
+javac Assignment2.java
+javac Assignment2.java
+javac Assignment2.java
+javac Assignment2.java
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
+javac Assignment2.java
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
+javac Assignment2.java
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
+javac Assignment2.java
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
+javac Assignment2.java
+javac Assignment2.java
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
+javac Assignment2.java
+java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
+javac Assignment2.java
+asdf
+exit
+exit
+git clone https://github.com/politza/pdf-tools.git
+cd pdf-tools/
+make
+cd nethack_el-0.9.5/
+make
+mv Downloads/typing.el .emacs.d/
+ls .emacs.d/
+clear
+mv Downloads/emacsia.tar.gz .
+tar -xvf emacsia.tar.gz 
+ls
+cd emacsia-release-1/
+ls
+cat README 
+% m \.el$
+ls
+gcc -o umake.c target.c arg_parse.c 
+exit
+git status
+git add target.c
+git commit -m "Formatting"
+git push origin master
+exit
+cd /ssh:covinga@linux.cs.wwu.edu#922:~/
+cd 367
+cd logosnet
+ls
+exit
