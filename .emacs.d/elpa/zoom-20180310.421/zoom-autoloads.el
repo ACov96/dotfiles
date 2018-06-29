@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "zoom" "zoom.el" (23240 1906 637646 160000))
+;;;### (autoloads nil "zoom" "zoom.el" (23227 3368 120737 100000))
 ;;; Generated autoloads from zoom.el
 
 (defvar zoom-mode nil "\

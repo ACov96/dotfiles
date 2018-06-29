@@ -1,0 +1,16 @@
+
+;; ----- smex-history -----
+(
+ find-file
+ cd
+ 5x5
+ arp
+ dbx
+ dig
+ erc
+)
+
+;; ----- smex-data -----
+(
+ (find-file . 1)
+)

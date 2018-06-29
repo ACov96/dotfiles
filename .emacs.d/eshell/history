@@ -1,128 +1,121 @@
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java
-javac Assignment2.java
-javac Assignment2.java
-javac Assignment2.java
-javac Assignment2.java
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java
-javac Assignment2.java
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java
-javac Assignment2.java
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-cd ..                                           ^
-cd ..
-cd Assignment1/
-javac Assignment1.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment1 
-cd ../Assignment2/
-clear
-javac Assignment1.java 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-Welcome to the Emacs shell
-clear
-cls
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-javac Assignment2.java 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-Writer connection established.
-javac Assignment2.java 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-Materials
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-Consumer Staples
-javac Assignment2.java 
-javac Assignment2.java 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-javac Assignment2.java 
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2 
-cd CSCI\ 330/Assignment2/
-javac Assignment2.java
-javac Assignment2.java
-javac Assignment2.java
-javac Assignment2.java
-javac Assignment2.java
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
-javac Assignment2.java
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
-javac Assignment2.java
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
-javac Assignment2.java
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
-javac Assignment2.java
-javac Assignment2.java
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
-javac Assignment2.java
-java -cp .:mysql-connector-java-5.1.42-bin.jar Assignment2  
-javac Assignment2.java
-asdf
+cd /ssh:covinga@nari
+cd /ssh:covinga@nari:
+workon resnet
 exit
+cd /ssh:covinga@nari:
+PATH
+$Path
+$PATH
+workon django
 exit
-git clone https://github.com/politza/pdf-tools.git
-cd pdf-tools/
-make
-cd nethack_el-0.9.5/
-make
-mv Downloads/typing.el .emacs.d/
-ls .emacs.d/
-clear
-mv Downloads/emacsia.tar.gz .
-tar -xvf emacsia.tar.gz 
+ssh
+ssh nari
+exit
+ssh nari
+ssh nari
+exit
+top
+cd /ssh:nari:~/
 ls
-cd emacsia-release-1/
-ls
-cat README 
-% m \.el$
-ls
-gcc -o umake.c target.c arg_parse.c 
+cd django
+fab runserver
+fab stopserver
+fab runserver
+fab runserver
+fab stopserver
+fab runserver
+fab stopserver
+cd ../resnet
+fab runserver
+echo Hello World >> #<buffer *scratch*>
+workon resnet
+ls ~/
 exit
-git status
-git add target.c
-git commit -m "Formatting"
-git push origin master
+node inspect star_cache.js 
 exit
-cd /ssh:covinga@linux.cs.wwu.edu#922:~/
-cd 367
-cd logosnet
+cd /ssh:nari:~/
+node
+exit
+exit
+bash
+bash
+node
+cd /ssh:nari:~/django
+git log
+bash
+exit
+bash
+cd /ssh:nari:~/
+bash
+bash
+cd
+bash
+cd star-cache/
+git log
+node
+bash
+bash
+bash
+bash
+bash
+bas
+bash
+bash
+bash
+exit
+bash
+bash
+bash
+bash
+bash
+bash
+exit
+bash
+bash
+bash
+ls -l
+ls -a
+cd .npm/
 ls
+cd 
+ls
+which eslint
+bash
 exit
+bash
+bash
+bash
+bash
+bash
+bash
+cd
+bash
+cd /ssh:nari:~/
+bash
+/bin/bash 
+/ssh:nari:/bin/bash 
+cd
+bash
+bash
+bash
+bash
+bash
+fish
+bash
+exit
+bash
+bash
+bash
+bash
+zsh
+bash
+bash
+exit
+fish
+fish
+fish
+fish
+exit
+fish
+fish
+bash

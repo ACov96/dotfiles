@@ -1,458 +1,1096 @@
-((("sr_to_person" .
-   [0 0 0 0 0 0 1 0 0 0 0 1])
-  ("sr_person" .
-   [3 0 0 0 0 0 1 0 0])
-  ("empty" .
-   [1 0 0 0 0])
-  ("status_codes" .
-   [1 0 0 0 0 0 0 0 0 0 0 0])
-  ("split" .
-   [1 0 0 0 0])
-  ("status" .
-   [12 0 0 0 0 0])
-  ("contract_type" .
-   [3 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("pidm" .
-   [1 0 0 0])
-  ("retur" .
-   [1 0 0 0 0])
-  ("to_term_code" .
-   [3 0 0 0 0 0 0 0 0 0 0 0])
-  ("term_sessions" .
-   [1 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("from_term_code" .
-   [3 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("booking" .
-   [3 0 0 0 0 0 0])
-  ("key" .
-   [1 0 0])
-  ("get_where" .
-   [1 0 0 0 0 0 1 2 0])
-  ("print" .
-   [1 0 0 0 1])
-  ("currLine" .
-   [1 0 0 0 0 0 0 0])
-  ("elements" .
-   [1 0 0 0 0 0 0 0])
-  ("twoOddVertices" .
-   [0 0 0 3 0 0 0 0 0 0 0 0 0 0])
-  ("vertex" .
-   [5 0 0 0 0 0])
-  ("false" .
-   [1 0 0 0 0])
-  ("oddVertices" .
-   [0 0 3 1 2 0 0 0 0 0 0])
-  ("inDegrees" .
-   [3 0 0 0 1 0 0 0 3])
-  ("Integer" .
-   [1 0 0 0 0 0 0])
-  ("out" .
-   [14 0 0])
-  ("numPrinted" .
-   [2 0 0 0 0 0 0 0 0 0])
-  ("printPath" .
-   [1 0 0 0 0 0 0 0 0])
-  ("edge" .
-   [8 0 0 0])
-  ("remove" .
-   [4 0 0 0 1 0])
-  ("curr" .
-   [5 0 0 0])
-  ("graph" .
-   [14 0 0 0 0])
-  ("println" .
-   [12 0 0 0 0 0 0])
-  ("System" .
-   [16 0 0 0 1 0])
-  ("size" .
-   [11 0 0 0])
-  ("numEdges" .
-   [3 0 0 0 0 1 0 0])
-  ("length" .
-   [4 0 0 0 0 0])
-  ("keys" .
-   [14 0 0 0])
-  ("Object" .
-   [3 0 0 0 0 0])
-  ("HashMap" .
-   [3 0 0 0 0 0 0])
-  ("visited" .
-   [3 0 0 6 2 2 0])
-  ("findPath" .
-   [2 0 0 0 0 0 1 0])
-  ("path" .
-   [22 0 0 0])
-  ("add" .
-   [8 0 0])
-  ("start" .
-   [7 0 0 0 0])
-  ("neighbors" .
-   [2 0 1 1 7 4 0 0 0])
-  ("toArray" .
-   [3 0 0 0 1 0 0])
-  ("keySet" .
-   [5 0 0 0 0 0])
-  ("HashSet" .
-   [4 0 0 0 0 0 0])
-  ("String" .
-   [27 0 0 0 0 0])
-  ("ArrayList" .
-   [3 0 0 0 1 4 0 0 3])
-  ("content" .
-   [1 0 0 0 0 0 0])
-  ("load" .
-   [1 0 0 0])
-  ("request" .
-   [1 0 0 0 0 0 0])
-  ("BASE_URL" .
-   [0 0 0 0 0 0 1 2])
-  ("Request" .
-   [0 0 0 1 0 0 0])
-  ("StarRez" .
-   [0 0 0 0 0 0 1])
-  ("GET" .
-   [0 0 1])
-  ("tables" .
-   [3 0 0 0 0 0])
-  ("get_table_list" .
-   [0 0 0 0 0 1 0 0 0 1 0 0 0 0])
-  ("relative_url" .
-   [0 0 0 3 0 1 0 0 0 0 0 0])
-  ("get_method" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("TABLES" .
-   [3 0 1 0 0 0])
-  ("is_valid_table" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("__do_request" .
-   [2 0 0 0 1 1 0 1 0 0 0 0])
-  ("rst" .
-   [3 0 0])
-  ("__do_get" .
-   [1 0 0 0 1 0 0 0])
-  ("grequests" .
-   [1 0 0 0 0 0 0 0 0])
-  ("async" .
-   [1 0 0 0 0])
-  ("requests" .
-   [2 0 0 0 0 0 0 0])
-  ("send" .
-   [1 0 0 0])
-  ("appPath" .
-   [1 0 0 0 0 0 0])
-  ("eager" .
-   [1 0 0 0 0])
-  ("to_dict" .
-   [1 0 0 0 0 0 0])
-  ("query" .
-   [1 0 0 0 0])
-  ("total" .
-   [5 0 0 0 0])
-  ("tag" .
-   [2 0 0])
-  ("ticket" .
-   [6 0 0 0 0 0])
-  ("filtered_tickets" .
-   [0 0 0 1 2 1 0 0 0 2 0 0 0 0 0 0])
-  ("new" .
-   [1 0 0])
-  ("tag_names" .
-   [2 0 0 0 0 0 0 0 0])
-  ("tags" .
-   [4 0 0 0])
-  ("nyan-mode" .
-   [1 0 0 0 0 0 0 0 0])
-  ("null" .
-   [16 0 0 0])
-  ("cancel-ticket-form" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("margin-bottom" .
-   [1 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("style" .
-   [1 0 0 0 0])
-  ("ldap_user" .
-   [1 0 0 0 0 0 0 0 0])
-  ("ldap" .
-   [1 0 0 0])
-  ("preload" .
-   [1 0 0 0 0 0 0])
-  ("currentUser" .
-   [1 0 0 0 0 0 0 0 0 1 0])
-  ("preloaded" .
-   [3 0 0 0 0 0 0 0 0])
-  ("user" .
-   [2 0 0 0])
-  ("models" .
-   [6 0 0 0 0 0])
-  ("students" .
-   [3 0 0 0 0 0 0 0])
-  ("model" .
-   [5 0 0 0 0])
-  ("student" .
-   [1 0 0 0 0 0 0])
-  ("form" .
-   [4 0 0 0])
-  ("compile" .
-   [1 0 0 0 0 0 0])
-  ("Handlebars" .
-   [0 0 0 0 0 0 0 0 1 0])
-  ("html" .
-   [2 0 0 0])
-  ("Compile" .
-   [0 0 0 0 1 0 0])
-  ("append" .
-   [6 0 0 0 0 0])
-  ("quarantineForm" .
-   [1 0 0 0 1 0 0 0 0 0 0 0 0 1])
-  ("quarantine" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("templateHolder" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("log" .
-   [36 0 0])
-  ("templates" .
-   [2 0 0 0 0 0 0 0 0])
-  ("template" .
-   [4 0 0 0 0 0 0 1])
-  ("console" .
-   [37 0 0 0 1 1 0])
-  ("showQuarantineForm" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("render" .
-   [3 0 0 0 0 0])
-  ("animate" .
-   [1 0 0 0 0 0 0])
-  ("scrollTop" .
-   [1 0 0 0 0 0 0 0 0])
-  ("offset" .
+((("Server" .
    [1 0 0 0 0 0])
-  ("submitQuarantine" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("req" .
+  ("ErrorHandling" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("Routing" .
+   [1 0 0 0 0 0 0])
+  ("RTError" .
+   [1 0 0 0 1 0 0])
+  ("RouteContainer" .
+   [0 0 0 0 0 0 0 0 2 0 0 0 0 0])
+  ("Route" .
+   [2 0 0 0 0])
+  ("RTServer" .
+   [1 0 0 0 1 0 0 0])
+  ("setq-default" .
+   [0 0 0 0 0 0 0 0 0 1 0 0])
+  ("is_active" .
+   [2 0 0 0 0 0 0 0 0])
+  ("suite" .
+   [16 0 0 0 0])
+  ("number" .
+   [1 0 0 0 0 0])
+  ("Key" .
    [4 0 0])
-  ("body" .
-   [3 0 0 0])
-  ("data" .
-   [26 0 0 0])
-  ("tickets" .
-   [3 0 0 0 0 0 0])
-  ("fetchComments" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("that" .
-   [9 0 0 0])
-  ("comments" .
-   [2 0 0 0 0 0 0 0])
-  ("filter" .
-   [6 0 0 0 0 0])
-  ("attributes" .
-   [7 0 0 0 0 0 0 0 0 0])
-  ("pk" .
-   [4 0])
-  ("public_content" .
-   [0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("subject" .
-   [0 0 0 0 0 0 1])
-  ("attribute" .
-   [0 0 0 0 0 0 0 0 1])
-  ("currentTarget" .
-   [2 0 0 0 0 0 0 0 0 0 2 0 0])
-  ("id" .
-   [4 0])
-  ("comment_id" .
-   [3 0 0 0 0 0 0 0 0 0])
-  ("delete-comment" .
-   [2 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("deleteCommentConfirm" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("deleteComment" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("preventDefault" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("ajax" .
-   [1 0 0 0])
-  ("method" .
+  ("room_info|get_item" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("context" .
+   [1 0 0 0 0 0 0])
+  ("vacant_room_info" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0])
+  ("Context" .
+   [1 0 0 0 0 0 0])
+  ("load-path" .
+   [1 0 0 0 0 0 0 0 0])
+  ("direct_groups" .
+   [1 0 0 0 2 3 4 0 0 0 0 0 0])
+  ("add-hook" .
+   [0 0 0 0 0 0 1 0])
+  ("emacs" .
+   [2 0 0 0 0])
+  ("toString" .
+   [3 0 0 0 0 0 0 0])
+  ("formatted_record" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 2 0 0])
+  ("formatted_query" .
+   [0 0 0 0 1 0 0 1 0 0 0 1 0 0 1])
+  ("formatted_" .
+   [0 0 0 0 1 0 0 0 0 0])
+  ("Tasks" .
+   [2 0 0 0 0])
+  ("tasks" .
+   [1 0 0 0 0])
+  ("$scope" .
+   [1 0 0 0 0 0])
+  ("candidate" .
+   [1 0 0 0 0 0 0 0 0])
+  ("statuses" .
+   [4 0 0 0 0 0 0 0])
+  ("wifiRevoked" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("allowWifi" .
+   [0 0 0 0 0 0 1 0 0])
+  ("wifiStatus" .
+   [1 0 0 0 0 0 0 0 1 0])
+  ("rp" .
+   [1 0])
+  ("else" .
+   [4 0 0 0])
+  ("customQueries" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("readFileSync" .
+   [0 0 0 0 0 0 0 0 0 1 0 0])
+  ("parse" .
+   [2 0 0 0 0])
+  ("this" .
+   [8 0 0 0])
+  ("candidateEntries" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0])
+  ("desc" .
+   [6 0 0 0])
+  ("indexOf" .
+   [1 0 0 0 0 0 0])
+  ("Description" .
+   [1 0 0 0 0 1 0 0 0 0 0])
+  ("roomSpace" .
+   [4 0 0 0 0 0 0 0 0])
+  ("earliestBookingStart" .
+   [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("bookingStart" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("currEarliestBooking" .
+   [0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("bookingEnd" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("CheckOutDate" .
+   [0 0 0 0 0 2 0 0 0 0 0 0])
+  ("Date" .
+   [4 0 0 0])
+  ("zoom-size" .
+   [1 0 0 0 0 0 0 0 0])
+  ("tableIDs" .
+   [1 0 0 0 0 0 0 0])
+  ("recordCB" .
+   [1 0 0 0 0 0 0 0])
+  ("tableCB" .
+   [1 0 0 0 0 0 0])
+  ("record" .
+   [11 0 0 0 0 0])
+  ("records" .
+   [6 0 0 0 0 0 0])
+  ("tableKeys" .
+   [1 0 0 0 1 0 0 0 0])
+  ("set" .
+   [5 0 0])
+  ("allData" .
+   [5 0 0 0 0 1 0])
+  ("tableName" .
+   [4 0 0 0 0 0 0 1 0])
+  ("config" .
    [2 0 0 0 0 0])
-  ("url" .
-   [1 0 0])
-  ("baseUrl" .
-   [1 0 0 0 0 0 0])
-  ("contentType" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("success" .
-   [1 0 0 0 0 0 0])
-  ("textStatus" .
-   [3 0 0 0 1 0 0 0 0 0])
-  ("xhr" .
+  ("configData" .
+   [15 0 0 0 0 0 0 0 0 0])
+  ("Map" .
    [4 0 0])
-  ("error" .
+  ("getAssignmentDetailsSync" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("a" .
+   [3])
+  ("await" .
+   [12 0 0 2 0])
+  ("getAssignmentDetailsAsync" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("getAssignmentDetails" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 2])
+  ("room_number" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("assignments" .
+   [6 0 0 0 0 0 0 0 0 0 0])
+  ("building" .
+   [8 0 0 0 0 0 0 0])
+  ("wnumber" .
+   [2 0 0 0 0 0 0])
+  ("w" .
+   [1])
+  ("room" .
+   [23 0 0 0])
+  ("room_id" .
+   [2 0 0 0 0 0 0])
+  ("getStudent" .
+   [0 0 0 0 0 3 0 0 0 0])
+  ("year" .
+   [6 0 0 0])
+  ("quarter" .
+   [2 0 0 0 4 0 0])
+  ("wNumber" .
+   [7 0 1 1 0 0 0])
+  ("getRoom" .
+   [1 0 0 0 0 2 1])
+  ("rooms" .
    [3 0 0 0 0])
-  ("errorThrown" .
+  ("getAssignments" .
+   [0 0 0 0 0 0 1 1 0 0 0 0 0 2])
+  ("assignment" .
+   [8 0 0 0 0 0 1 0 0 12])
+  ("studentID" .
+   [2 0 0 0 0 0 0 0 0])
+  ("proc" .
+   [1 0 0 0])
+  ("index" .
+   [2 0 0 0 0])
+  ("recarglist" .
+   [0 0 0 0 0 0 2 0 0 0])
+  ("COMMA" .
+   [2 0 0 0 0])
+  ("varid" .
+   [4 0 0 0 0])
+  ("arglist" .
+   [3 0 0 0 0 0 0])
+  ("LBRACE" .
+   [1 0 0 0 0 0])
+  ("RPAREN" .
+   [1 0 0 0 0 0])
+  ("LPAREN" .
+   [1 0 0 0 0 0])
+  ("ID" .
+   [3 0])
+  ("FUNCTION" .
+   [2 0 0 0 0 0 0 0])
+  ("return" .
+   [16 0 0 0 0 0])
+  ("fundec" .
+   [2 0 0 0 0 0])
+  ("SYNC" .
+   [1 0 0 0])
+  ("ASYNC" .
+   [1 0 0 0 0])
+  ("synctype" .
+   [2 0 0 0 0 0 0 0])
+  ("CONST" .
+   [1 0 0 0 0])
+  ("exp" .
+   [2 0 0])
+  ("LET" .
+   [1 0 0])
+  ("test" .
+   [5 0 0 0])
+  ("ASSIGN" .
+   [3 0 0 0 0 0])
+  ("varexp" .
+   [4 0 0 0 0 0])
+  ("VAR" .
+   [1 0 0])
+  ("vardec" .
+   [3 0 0 0 0 0])
+  ("dec" .
+   [3 0 0])
+  ("NUMBER" .
+   [3 0 0 0 0 0])
+  ("SEMICOLON" .
+   [1 0 1 0 1 2 0 0 0])
+  ("elist" .
+   [1 0 0 0 0])
+  ("RBRACE" .
+   [2 0 0 0 0 0])
+  ("seqexp" .
+   [1 0 0 0 0 0])
+  ("const" .
+   [12 0 0 0 0])
+  ("numbers" .
+   [1 0 0 0 0 0 0])
+  ("parseArgs" .
+   [0 0 0 0 0 1 0 0 0])
+  ("args" .
+   [2 0 0 0])
+  ("buildParser" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("build" .
+   [1 0 0 0 0])
+  ("ap" .
+   [3 0])
+  ("exports" .
+   [5 0 0 0 0 0 0])
+  ("ArgumentParser" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("argparse" .
+   [3 0 0 0 0 0 0 0])
+  ("val" .
+   [1 0 0])
+  ("to" .
+   [1 0])
+  ("emailTemplates" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("emailFormTpl" .
+   [0 0 0 0 0 0 0 0 0 0 1 0])
+  ("catalog" .
+   [2 0 0 0 0 0 0])
+  ("ticketTemplates" .
+   [0 0 0 0 0 0 0 1 0 1 0 0 0 0 0])
+  ("commentTemplates" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("commentFormTpl" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("selectedTickets" .
+   [0 0 0 0 0 0 0 0 1 1 0 0 0 0 3])
+  ("bind" .
+   [1 0 0 0])
+  ("_getCommentAuthors" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("partial" .
+   [1 0 0 0 0 0 0])
+  ("Tickets" .
+   [1 0 0 0 0 0 0])
+  ("dateString" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("replace" .
+   [9 0 0 0 0 0 0])
+  ("date" .
+   [3 0 0 0])
+  ("opts" .
+   [2 0 0 0])
+  ("registerHelper" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("fetch" .
+   [1 0 0 0 0])
+  ("true" .
+   [11 0 0 0])
+  ("fetchTickets" .
+   [0 0 0 0 0 0 1 0 0 0 0 0])
+  ("bookings" .
+   [8 0 0 0 0 0 0 0])
+  ("col-sm-2" .
+   [1 0 0 0 0 0 0 0])
+  ("col-xs-2" .
+   [1 0 0 0 0 0 0 0])
+  ("hide" .
+   [1 0 0 0])
+  ("newDevice" .
+   [1 0 0 0 0 0 0 0 0])
+  ("full_name" .
+   [1 0 0 0 0 0 0 0 0])
+  ("student_id" .
+   [4 0 0 0 0 0 0 0 0 1])
+  ("gender" .
+   [1 0 0 0 0 0])
+  ("full_gender" .
+   [0 0 0 0 1 0 0 0 0 0 0])
+  ("preferred_first_name" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("first_name" .
+   [1 0 0 0 0 0 1 0 0 1])
+  ("person" .
+   [12 0 0 0 0 1])
+  ("last_name" .
+   [1 0 0 0 0 1 0 0 0])
+  ("sr_data" .
+   [9 0 2 0 0 0 1])
+  ("birth_date" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("Person" .
+   [4 0 0 0 0 0])
+  ("staticmethod" .
+   [0 0 0 0 0 0 1 0 0 0 0 0])
+  ("where" .
+   [5 0 0 0 0])
+  ("object_id" .
+   [6 0 0 0 0 0 0 0 0])
+  ("action" .
+   [7 0 0 0 0 0])
+  ("url_end" .
+   [1 0 0 0 1 0 0])
+  ("__doRequest" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("rst_type" .
+   [1 0 0 0 1 0 0 0])
+  ("urlEnd" .
+   [1 0 0 0 0 0])
+  ("__rst" .
+   [4 0 0 0 1])
+  ("StarRezAPI" .
+   [0 0 0 0 1 0 2 0 1 10])
+  ("table" .
+   [34 0 0 0 0])
+  ("post" .
+   [1 0 0 0])
+  ("branch_name" .
    [3 0 0 0 0 0 0 0 0 0 0])
-  ("beacon" .
+  ("checkout" .
+   [1 0 0 0 0 0 0 0])
+  ("%d," .
+   [1 0 0])
+  ("%A," .
+   [1 0 0])
+  ("DJANGOMASTER" .
+   [1 0 0 0 0 1 0 0 0 0 0 0])
+  ("DJANGO_MASTER" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("master" .
+   [3 0 0 0 0 0])
+  ("echo" .
+   [0 0 0 1])
+  ("relevantEntryMeal" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("emDate" .
+   [1 0 0 0 0 0])
+  ("em" .
+   [1 0])
+  ("bDate" .
+   [3 0 0 0 0])
+  ("aDate" .
+   [2 0 0 0 0])
+  ("sort" .
+   [1 0 0 0])
+  ("and" .
+   [2 0 0])
+  ("cb" .
+   [16 0])
+  ("termEnd" .
+   [2 0 0 0 0 0 0])
+  ("termStart" .
+   [2 0 0 0 0 0 0 0 0])
+  ("ContractDateStart" .
+   [0 0 0 0 0 0 0 2 0 0 0 0 0 0 1 0 2])
+  ("relevant" .
+   [0 0 0 0 0 0 0 1])
+  ("now" .
+   [6 0 0])
+  ("results" .
+   [10 0 0 0 0 0 0])
+  ("push" .
+   [7 0 0 0])
+  ("handleError" .
+   [0 0 0 0 0 0 0 0 1 0 0])
+  ("result" .
+   [5 0 0 0 0 0])
+  ("waterfall" .
+   [1 0 0 0 0 1 0 1 2])
+  ("values" .
+   [10 0 0 0 0 0])
+  ("termID" .
+   [3 0 0 0 0 0])
+  ("reject" .
+   [11 0 0 0 0 0])
+  ("resolve" .
+   [10 0 0 0 0 0 0])
+  ("Promise" .
+   [8 0 0 0 0 0 0])
+  ("function" .
+   [5 0 3 1 0 0 0 0])
+  ("callback" .
+   [16 0 0 0 0 0 0 0])
+  ("TermID" .
+   [9 0 0 0 0 0])
+  ("t" .
+   [2])
+  ("eachSeries" .
+   [1 0 0 0 0 0 0 2 0 0])
+  ("term" .
+   [2 0 0 0])
+  ("entryTerms" .
+   [13 0 0 0 0 0 0 0 1 0])
+  ("EntryID" .
+   [4 0 0 0 0 0 0])
+  ("entryid" .
+   [1 0 0 0 0 0 0])
+  ("forEach" .
+   [8 0 0 0 0 1 0])
+  ("let" .
+   [41 0 0])
+  ("entryMeals" .
+   [5 0 0 0 0 0 0 0 0 0])
+  ("Entry" .
+   [1 0 0 0 1])
+  ("getCurrentEntryMeals" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("getWhere" .
+   [4 0 0 0 0 1 0 0])
+  ("e" .
+   [4])
+  ("catch" .
+   [6 0 0 1 0])
+  ("then" .
+   [6 0 0 0])
+  ("get" .
+   [32 0 0])
+  ("sr" .
+   [3 0])
+  ("relativeURL" .
+   [0 0 0 0 0 0 0 0 0 1 0])
+  ("err" .
+   [49 0 0])
+  ("try" .
+   [3 0 0])
+  ("ValueError" .
+   [0 0 0 0 0 1 0 0 0 0])
+  ("parameters" .
+   [4 0 0 0 0 0 0 0 0 0])
+  ("statusMessage" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("res" .
+   [24 0 0])
+  ("header" .
    [1 0 0 0 0 0])
   ("card" .
    [1 0 0 0])
-  ("header" .
+  ("beacon" .
    [1 0 0 0 0 0])
-  ("res" .
-   [2 0 0])
-  ("statusMessage" .
-   [2 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("parameters" .
-   [4 0 0 0 0 0 0 0 0 0])
-  ("ValueError" .
-   [0 0 0 0 0 1 0 0 0 0])
-  ("try" .
-   [1 0 0])
-  ("err" .
-   [17 0 0])
-  ("relativeURL" .
-   [0 0 0 0 0 0 0 0 0 1 0])
-  ("sr" .
-   [3 0])
-  ("get" .
-   [22 0 0])
-  ("then" .
-   [4 0 0 0])
-  ("catch" .
-   [3 0 0 1 0])
-  ("e" .
-   [3])
-  ("getWhere" .
-   [4 0 0 0 0 0 0 0])
-  ("getCurrentEntryMeals" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("Entry" .
-   [1 0 0 0 0])
-  ("entryMeals" .
-   [5 0 0 0 0 0 0 0 0 0])
-  ("let" .
-   [8 0 0])
-  ("forEach" .
-   [2 0 0 0 0 0 0])
-  ("entryid" .
-   [1 0 0 0 0 0 0])
-  ("EntryID" .
-   [1 0 0 0 0 0 0])
-  ("entryTerms" .
-   [13 0 0 0 0 0 0 0 1 0])
-  ("term" .
-   [2 0 0 0])
-  ("eachSeries" .
-   [1 0 0 0 0 0 0 2 0 0])
-  ("t" .
-   [1])
-  ("TermID" .
-   [9 0 0 0 0 0])
-  ("callback" .
-   [16 0 0 0 0 0 0 0])
-  ("function" .
-   [0 0 3 1 0 0 0 0])
-  ("Promise" .
-   [1 0 0 0 0 0 0])
-  ("resolve" .
-   [3 0 0 0 0 0 0])
-  ("reject" .
-   [4 0 0 0 0 0])
-  ("termID" .
-   [3 0 0 0 0 0])
-  ("values" .
-   [9 0 0 0 0 0])
-  ("waterfall" .
-   [0 0 0 0 0 1 0 1 0])
-  ("result" .
-   [3 0 0 0 0 0])
-  ("handleError" .
-   [0 0 0 0 0 0 0 0 1 0 0])
-  ("push" .
-   [4 0 0 0])
-  ("results" .
-   [5 0 0 0 0 0 0])
-  ("now" .
-   [4 0 0])
-  ("relevant" .
-   [0 0 0 0 0 0 0 1])
-  ("ContractDateStart" .
-   [0 0 0 0 0 0 0 2 0 0 0 0 0 0 1 0 2])
-  ("termStart" .
-   [2 0 0 0 0 0 0 0 0])
-  ("termEnd" .
-   [2 0 0 0 0 0 0])
-  ("cb" .
-   [7 0])
-  ("and" .
-   [1 0 0])
-  ("sort" .
-   [1 0 0 0])
-  ("aDate" .
-   [2 0 0 0 0])
-  ("bDate" .
-   [3 0 0 0 0])
-  ("em" .
-   [1 0])
-  ("emDate" .
-   [1 0 0 0 0 0])
-  ("relevantEntryMeal" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("echo" .
-   [0 0 0 1])
-  ("master" .
-   [3 0 0 0 0 0])
-  ("DJANGO_MASTER" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("DJANGOMASTER" .
-   [1 0 0 0 0 1 0 0 0 0 0 0])
-  ("%A," .
-   [1 0 0])
-  ("%d," .
-   [1 0 0])
-  ("checkout" .
-   [1 0 0 0 0 0 0 0])
-  ("branch_name" .
+  ("errorThrown" .
    [3 0 0 0 0 0 0 0 0 0 0])
-  ("post" .
+  ("error" .
+   [29 0 0 0 0])
+  ("xhr" .
+   [4 0 0])
+  ("textStatus" .
+   [3 0 0 0 1 0 0 0 0 0])
+  ("success" .
+   [6 0 0 0 0 0 0])
+  ("contentType" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("baseUrl" .
+   [1 0 0 0 0 1 0])
+  ("url" .
+   [1 0 0])
+  ("method" .
+   [2 0 0 0 0 0])
+  ("ajax" .
    [1 0 0 0])
-  ("table" .
-   [19 0 0 0 0])
-  ("StarRezAPI" .
-   [0 0 0 0 1 0 1 0 1 10])
-  ("__rst" .
-   [4 0 0 0 1])
-  ("urlEnd" .
-   [1 0 0 0 0 0])
-  ("rst_type" .
-   [1 0 0 0 1 0 0 0])
-  ("__doRequest" .
-   [0 0 0 0 0 0 0 1 0 0 0])
-  ("url_end" .
-   [1 0 0 0 1 0 0])
-  ("action" .
+  ("preventDefault" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("deleteComment" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("deleteCommentConfirm" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("delete-comment" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("comment_id" .
+   [3 0 0 0 0 0 0 0 0 0])
+  ("id" .
+   [10 0])
+  ("currentTarget" .
+   [2 0 0 0 0 0 0 0 0 0 4 0 0])
+  ("attribute" .
+   [0 0 0 0 0 0 0 0 1])
+  ("subject" .
+   [0 0 0 0 0 0 1])
+  ("public_content" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("pk" .
+   [4 0])
+  ("attributes" .
+   [9 0 0 0 0 1 0 0 0 0])
+  ("filter" .
+   [19 0 0 0 2 0])
+  ("comments" .
+   [2 0 0 0 0 0 0 0])
+  ("that" .
+   [19 0 0 0])
+  ("fetchComments" .
+   [1 0 0 0 0 0 1 0 1 0 0 0 0])
+  ("tickets" .
+   [12 0 0 0 0 0 0])
+  ("data" .
+   [30 0 0 0])
+  ("body" .
+   [4 0 0 0])
+  ("req" .
+   [10 0 0])
+  ("submitQuarantine" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("offset" .
+   [2 0 0 0 0 0])
+  ("scrollTop" .
+   [2 0 0 0 0 0 0 0 0])
+  ("animate" .
+   [2 0 0 0 0 0 0])
+  ("render" .
    [7 0 0 0 0 0])
-  ("object_id" .
-   [6 0 0 0 0 0 0 0 0])
-  ("where" .
-   [3 0 0 0 0])
-  ("staticmethod" .
-   [0 0 0 0 0 0 1 0 0 0 0 0])
-  ("Person" .
-   [4 0 0 0 0 0])
-  ("birth_date" .
+  ("showQuarantineForm" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("console" .
+   [126 0 0 0 1 2 1])
+  ("template" .
+   [4 0 0 0 0 0 0 1])
+  ("templates" .
+   [2 0 0 0 0 0 0 0 0])
+  ("log" .
+   [112 0 0])
+  ("templateHolder" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("quarantine" .
    [1 0 0 0 0 0 0 0 0 0])
-  ("sr_data" .
-   [9 0 2 0 0 0 1])
-  ("last_name" .
-   [1 0 0 0 0 1 0 0 0])
-  ("person" .
-   [12 0 0 0 0 1])
-  ("first_name" .
-   [1 0 0 0 0 0 1 0 0 1])
-  ("preferred_first_name" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("full_gender" .
-   [0 0 0 0 1 0 0 0 0 0 0])
-  ("gender" .
+  ("quarantineForm" .
+   [1 0 0 0 1 0 0 0 0 0 0 0 0 1])
+  ("append" .
+   [12 0 0 0 0 0])
+  ("Compile" .
+   [0 0 0 0 1 0 0])
+  ("html" .
+   [2 0 0 0])
+  ("Handlebars" .
+   [0 0 1 0 0 0 1 0 1 0])
+  ("compile" .
+   [1 0 0 0 0 0 0])
+  ("form" .
+   [4 0 0 0])
+  ("student" .
+   [7 0 0 1 1 0 3])
+  ("model" .
+   [6 0 0 0 0])
+  ("students" .
+   [11 0 0 0 0 0 0 0])
+  ("models" .
+   [8 0 0 0 0 0])
+  ("user" .
+   [4 0 0 0])
+  ("preloaded" .
+   [4 0 0 0 0 0 0 0 0])
+  ("currentUser" .
+   [1 0 0 0 0 0 0 0 0 2 0])
+  ("preload" .
+   [1 0 0 0 0 0 1])
+  ("ldap" .
+   [1 0 0 0])
+  ("ldap_user" .
+   [1 0 0 0 0 0 0 0 0])
+  ("style" .
+   [3 0 0 0 0])
+  ("margin-bottom" .
+   [1 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("cancel-ticket-form" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("null" .
+   [31 0 0 0])
+  ("nyan-mode" .
+   [1 0 0 0 0 0 0 0 0])
+  ("tags" .
+   [4 0 0 0])
+  ("tag_names" .
+   [2 0 0 0 0 0 0 0 0])
+  ("new" .
+   [8 0 0])
+  ("filtered_tickets" .
+   [0 0 0 1 2 1 0 0 0 2 0 0 0 0 0 0])
+  ("ticket" .
+   [18 0 0 0 0 0])
+  ("tag" .
+   [4 0 0])
+  ("total" .
+   [5 0 0 0 0])
+  ("query" .
+   [26 0 0 0 0])
+  ("to_dict" .
+   [1 0 0 0 0 0 0])
+  ("eager" .
+   [1 0 0 0 0])
+  ("appPath" .
+   [1 0 0 0 0 0 0])
+  ("send" .
+   [13 0 0 0])
+  ("requests" .
+   [2 0 0 0 0 0 0 0])
+  ("async" .
+   [18 0 0 0 0])
+  ("grequests" .
+   [1 0 0 0 0 0 0 0 0])
+  ("__do_get" .
+   [1 0 0 0 1 0 0 0])
+  ("rst" .
+   [3 0 0])
+  ("__do_request" .
+   [2 0 0 0 1 1 0 1 0 0 0 0])
+  ("is_valid_table" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("TABLES" .
+   [3 0 1 0 0 0])
+  ("get_method" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("relative_url" .
+   [0 0 0 3 0 1 0 0 0 0 0 0])
+  ("get_table_list" .
+   [0 0 0 0 0 1 0 0 0 1 0 0 0 0])
+  ("tables" .
+   [6 0 0 0 0 0])
+  ("GET" .
+   [0 0 1])
+  ("StarRez" .
+   [0 0 0 0 0 0 1])
+  ("Request" .
+   [0 0 0 1 0 0 0])
+  ("BASE_URL" .
+   [0 0 0 0 0 0 1 2])
+  ("request" .
+   [1 0 0 0 0 0 0])
+  ("load" .
+   [1 0 0 0])
+  ("content" .
+   [1 0 0 0 0 0 0])
+  ("ArrayList" .
+   [3 0 0 0 1 4 0 0 3])
+  ("String" .
+   [27 0 0 0 0 0])
+  ("HashSet" .
+   [4 0 0 0 0 0 0])
+  ("keySet" .
+   [5 0 0 0 0 0])
+  ("toArray" .
+   [3 0 0 0 1 0 0])
+  ("neighbors" .
+   [2 0 1 1 7 4 0 0 0])
+  ("start" .
+   [7 0 0 0 0])
+  ("add" .
+   [8 0 0])
+  ("path" .
+   [23 0 0 0])
+  ("findPath" .
+   [2 0 0 0 0 0 1 0])
+  ("visited" .
+   [3 0 0 6 2 2 0])
+  ("HashMap" .
+   [3 0 0 0 0 0 0])
+  ("Object" .
+   [3 0 0 0 0 0])
+  ("keys" .
+   [19 0 0 1])
+  ("length" .
+   [9 0 0 0 0 0])
+  ("numEdges" .
+   [3 0 0 0 0 1 0 0])
+  ("size" .
+   [11 0 0 0])
+  ("System" .
+   [16 0 0 0 1 0])
+  ("println" .
+   [12 0 0 0 0 0 0])
+  ("graph" .
+   [14 0 0 0 0])
+  ("curr" .
+   [5 0 0 0])
+  ("remove" .
+   [5 0 0 0 1 0])
+  ("edge" .
+   [8 0 0 0])
+  ("printPath" .
+   [1 0 0 0 0 0 0 0 0])
+  ("numPrinted" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("out" .
+   [14 0 0])
+  ("Integer" .
+   [1 0 0 0 0 0 0])
+  ("inDegrees" .
+   [3 0 0 0 1 0 0 0 3])
+  ("oddVertices" .
+   [0 0 3 1 2 0 0 0 0 0 0])
+  ("false" .
+   [4 0 0 0 0])
+  ("vertex" .
+   [5 0 0 0 0 0])
+  ("twoOddVertices" .
+   [0 0 0 3 0 0 0 0 0 0 0 0 0 0])
+  ("elements" .
+   [1 0 0 0 0 0 0 0])
+  ("currLine" .
+   [1 0 0 0 0 0 0 0])
+  ("print" .
+   [2 0 0 0 1])
+  ("get_where" .
+   [1 0 0 1 0 0 1 2 0])
+  ("key" .
+   [15 0 0])
+  ("booking" .
+   [13 0 0 0 0 0 2])
+  ("from_term_code" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("term_sessions" .
+   [1 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("to_term_code" .
+   [3 0 0 0 0 0 0 0 0 0 0 0])
+  ("retur" .
+   [1 0 0 0 0])
+  ("pidm" .
+   [1 0 0 0])
+  ("contract_type" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("status" .
+   [23 0 0 0 0 0])
+  ("split" .
+   [4 0 0 0 0])
+  ("status_codes" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("empty" .
+   [9 0 0 0 0])
+  ("sr_person" .
+   [3 0 0 0 0 0 1 0 0])
+  ("sr_to_person" .
+   [0 0 0 0 0 0 1 0 0 0 0 1])
+  ("require" .
+   [14 0 0 0 0 0 0])
+  ("token" .
+   [3 0 0 0 0])
+  ("jwt" .
+   [2 0 0])
+  ("verify" .
    [1 0 0 0 0 0])
-  ("student_id" .
-   [1 0 0 0 0 0 0 0 0 1])
-  ("full_name" .
-   [1 0 0 0 0 0 0 0 0])))
+  ("check" .
+   [4 0 0 0 0])
+  ("value" .
+   [1 0 0 0 0])
+  ("fn" .
+   [1 0])
+  ("sorttable_customkey" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("date_parser" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("modified_date" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("setq" .
+   [11 0 0 0])
+  ("mail-sources" .
+   [0 0 0 0 0 1 0 0 0 0 0 0])
+  (":server" .
+   [1 0 0 0 0 0 0])
+  ("gnus-select-method" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("each" .
+   [5 0 0 0])
+  ("div" .
+   [5 0 0])
+  ("className" .
+   [1 0 0 0 0 0 0 0 0])
+  ("TicketView" .
+   [0 0 0 0 0 0 0 0 1 0])
+  ("el" .
+   [1 0])
+  ("options" .
+   [2 0 0 0 0 0 0])
+  ("collapse" .
+   [1 0 0 0 0 0 0 0])
+  ("detail" .
+   [1 0 0 0 0 0])
+  ("parentName" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("typeahead" .
+   [1 0 0 0 0 0 0 0 0])
+  ("width" .
+   [1 0 0 0 0])
+  ("Ticket" .
+   [1 0 0 0 0 1])
+  ("class" .
+   [1 0 0 0 0])
+  ("done" .
+   [1 0 0 0])
+  ("w-50" .
+   [1 0 0 0])
+  ("col-md-6" .
+   [1 0 0 0 0 0 0 0])
+  ("JSON" .
+   [3 0 0 0])
+  ("stringify" .
+   [0 0 0 0 0 1 0 0 0])
+  ("state" .
+   [1 0 0 0 0])
+  ("mode" .
+   [1 0 0 0])
+  ("module" .
+   [4 0 0 0 0 0])
+  ("style_version" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("process" .
+   [11 0 0 0 0 0 1])
+  ("exit" .
+   [8 0 0 0])
+  ("fs" .
+   [3 0])
+  ("file" .
+   [6 0 0 0])
+  ("custom-set-variables" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0])
+  ("selectedTags" .
+   [1 0 0 0 0 0 0 0 0 0 3 0])
+  ("tagName" .
+   [5 0 0 0 0 0 0])
+  ("showSelectedTags" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("text" .
+   [1 0 0 0])
+  ("TicketAPI" .
+   [1 0 0 0 0 0 0 0 1])
+  ("copyright_count" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("pid" .
+   [6 0 0])
+  ("pm2" .
+   [10 0 0])
+  ("list" .
+   [1 0 0 0])
+  ("processes" .
+   [2 0 0 0 0 0 0 0 0])
+  ("pList" .
+   [3 0 0 0 0])
+  ("targetProcess" .
+   [0 0 0 1 0 0 2 0 0 0 0 0 0])
+  ("disconnect" .
+   [2 0 0 0 1 0 1 1 0 0])
+  ("stopError" .
+   [0 0 0 0 0 0 0 2 0])
+  ("argv" .
+   [2 0 0 0])
+  ("port" .
+   [1 0 0 0])
+  ("params" .
+   [1 0 0 0 1 1])
+  ("parseInt" .
+   [0 0 0 0 0 0 1 0])
+  ("app" .
+   [4 0 0])
+  ("zoom" .
+   [1 0 0 0])
+  ("if" .
+   [14 0])
+  ("tableNames" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("toLowerCase" .
+   [1 0 0 0 1 0 0 6 0 0 0])
+  ("all" .
+   [6 0 0])
+  ("map" .
+   [5 0 0])
+  ("candidateRecords" .
+   [0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0])
+  ("for" .
+   [4 0 0])
+  ("property" .
+   [6 0 0 0 0 0 1 0])
+  ("Array" .
+   [2 0 0 0 1])
+  ("from" .
+   [2 0 0 0])
+  ("cache" .
+   [4 0 0 0 0])
+  ("first" .
+   [2 0 0 0 0])
+  ("last" .
+   [1 0 0 0])
+  ("json" .
+   [3 0 0 0])
+  ("entry" .
+   [10 0 0 0 0])
+  ("entryIDs" .
+   [5 0 0 0 0 0 0 0])
+  ("entries" .
+   [3 0 0 0 0 0 0])
+  ("uri" .
+   [3 0 0])
+  ("bookingArray" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("entryID" .
+   [7 0 0 0 0 0 0])
+  ("bookingsByEntry" .
+   [0 0 0 0 0 0 0 0 0 1 1 0 0 0 3])
+  ("hall" .
+   [4 0 0 0])
+  ("fileName" .
+   [1 0 0 0 0 0 0 0])
+  ("aliases" .
+   [4 0 0 0 0 0 0])
+  ("alias" .
+   [6 0 0 0 0])
+  ("aliasedTables" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("aliasName" .
+   [6 0 0 0 0 0 0 0 0])
+  ("aliasIndex" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("candidateTables" .
+   [0 0 0 0 0 0 0 0 0 0 1 2 0 0 1])
+  ("tableAliases" .
+   [0 0 0 0 0 0 0 0 0 1 0 1])
+  ("tableAlias" .
+   [3 0 0 0 0 0 0 0 0 1])
+  ("name" .
+   [1 0 0 0])
+  ("queryType" .
+   [1 0 0 0 0 0 0 0 0])
+  ("django" .
+   [1 0 0 0 0 0])
+  ("management" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("base" .
+   [1 0 0 0])
+  ("BaseCommand" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("wwu_housing" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("keymanager" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("KeyTransaction" .
+   [0 0 0 0 1 2 1 1 0 0 0 0 0 1])
+  ("Command" .
+   [1 0 0 0 0 0 0])
+  ("handle" .
+   [1 0 0 0 0 0])
+  ("core" .
+   [1 0 0 0])
+  ("dt" .
+   [2 0])
+  ("timedelta" .
+   [1 0 0 0 0 0 0 0 0])
+  ("days" .
+   [1 0 0 0])
+  ("date_threshold" .
+   [0 0 0 0 0 0 0 2 0 0 0 0 0 0])
+  ("key_transactions" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("object" .
+   [4 0 0 0 0 1])
+  ("objects" .
+   [2 0 0 1 1 0 1])
+  ("resident_pidm__isnull" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0])
+  ("True" .
+   [6 0 0 0])
+  ("exclude" .
+   [1 0 0 0 0 0 0])
+  ("Resident" .
+   [0 0 0 0 1 0 0 0])
+  ("False" .
+   [2 0 0 0 0])
+  ("room_keys" .
+   [0 0 0 0 0 0 0 1 1])
+  ("count" .
+   [2 0 0 0 0])
+  ("suite_keys" .
+   [5 0 0 1 0 0 0 1 0 0])
+  ("or" .
+   [1 0])
+  ("vacant_rooms" .
+   [0 0 0 0 6 1 0 0 0 0 0 2])
+  ("evil-set-initial-state" .
+   [0 0 0 0 0 0 0 0 2 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("js2-mode" .
+   [1 0 0 1 0 0 0 2])
+  ("prog-mode-hook" .
+   [0 0 0 0 2 0 0 0 0 0 0 0 0 0])
+  ("normal" .
+   [3 0 0 0 0 0])
+  ("web-mode" .
+   [0 0 0 0 0 0 0 1])
+  ("add-to-list" .
+   [0 0 0 0 0 0 4 0 0 0 0])
+  ("eshell-visual-commands" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("powerline" .
+   [1 0 0 0 0 0 0 0 0])
+  ("groups_to_search" .
+   [0 0 0 0 0 0 0 0 4 1 0 0 0 0 0 0])
+  ("groups" .
+   [3 0 0 0 0 0])
+  ("_search" .
+   [1 0 0 0 0 0 0])
+  ("concat" .
+   [1 0 0 0 0 0])
+  ("new_groups" .
+   [0 0 0 0 0 1 0 0 0 0])
+  ("memberOf" .
+   [1 0 0 0 0 0 1 0])
+  ("client" .
+   [2 0 0 0 0 0])
+  ("_bind" .
+   [1 0 0 0 0])
+  ("_unbind" .
+   [0 0 0 0 0 1 0])
+  ("group_name" .
+   [3 0 0 0 0 0 0 0 0 0])
+  ("searchHandler" .
+   [1 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("on" .
+   [3 0])
+  ("nil" .
+   [2 0 0])
+  ("lambda" .
+   [0 0 0 0 1 0])
+  ("flycheck" .
+   [0 0 0 0 0 0 0 1])
+  ("vacant_suites" .
+   [4 0 0 0 1 0 1 0 0 1 4 0 0])
+  ("tr" .
+   [5 0])
+  ("th" .
+   [8 0])
+  ("Type" .
+   [2 0 0 0])
+  ("Condition" .
+   [1 0 0 0 0 1 0 0 1])
+  ("endfor" .
+   [4 0 0 0 0 0])
+  ("suites" .
+   [5 0 0 0 0 0])
+  ("iterkeys" .
+   [0 0 0 0 0 0 1 0])
+  ("strong" .
+   [1 0 0 0 0 0])
+  ("Keys" .
+   [1 0 0 0])
+  ("suite_number" .
+   [3 0 0 0 0 0 0 0 0 0 0 0])
+  ("td" .
+   [8 0])
+  ("Suite" .
+   [2 0 0 0 0])
+  ("endwith" .
+   [1 0 0 0 0 0 1])
+  ("unique_number" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("Room" .
+   [1 0 0 0])
+  ("all_room_keys" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("border" .
+   [1 0 0 0 0 0])
+  ("day_threshold" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("key_transaction" .
+   [0 0 0 0 0 1 1 0 0 0 0 0 0 0 0])
+  ("vacant_within_last_24_hours" .
+   [0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("/app" .
+   [1 0 0 0])
+  ("EXPOSE" .
+   [1 0 0 0 0 0])
+  ("WORKDIR" .
+   [1 0 0 0 0 0 0])
+  ("ADD" .
+   [1 0 0])
+  ("/server" .
+   [1 0 0 0 0 0 0])))

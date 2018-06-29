@@ -1,9 +1,10 @@
 ;;; tablist-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "tablist" "tablist.el" (22906 1826 352898 246000))
+;;;### (autoloads nil "tablist" "tablist.el" (23346 49261 415077
+;;;;;;  300000))
 ;;; Generated autoloads from tablist.el
 
 (autoload 'tablist-minor-mode "tablist" "\
@@ -23,7 +24,7 @@ the mode if ARG is omitted or nil, and toggle it if ARG is `toggle'.
 ;;;***
 
 ;;;### (autoloads nil nil ("tablist-filter.el" "tablist-pkg.el")
-;;;;;;  (22906 1826 356156 841000))
+;;;;;;  (23346 49261 379077 300000))
 
 ;;;***
 

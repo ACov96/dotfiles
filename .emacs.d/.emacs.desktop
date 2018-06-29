@@ -2,73 +2,42 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Sun Feb 25 17:50:35 2018
-;; Desktop file format version 206
-;; Emacs version 24.5.1
+;; Created Thu Jun 21 08:01:21 2018
+;; Desktop file format version 208
+;; Emacs version 25.1.1
 
 ;; Global section:
-(setq desktop-saved-frameset [frameset 1 (23187 26603 452984 651000) (desktop . "206") "covinga@linux-07.cs.wwu.edu" nil nil ((((tty-type . "xterm-256color") (tty . "/dev/tty") (display-type . color) (background-mode . dark) (foreground-color . "#F5F5F5") (cursor-color . "#F5F5F5") (background-color . "#1B1E1C") (mouse-color . "#F5F5F5") (menu-bar-lines . 0) (tool-bar-lines . 0) (vertical-scroll-bars) (font . "tty") (height . 63) (width . 283) (modeline . t) (unsplittable) (frameset--id . "CB70-E7BD-E960-B216") (frameset--mini t) (minibuffer . t)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 2) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 4) (min-pixel-width . 10) (min-pixel-height-ignore . 2) (min-pixel-width-ignore . 2) (min-pixel-height-safe . 1) (min-pixel-width-safe . 2)) leaf (pixel-width . 283) (pixel-height . 62) (total-width . 283) (total-height . 62) (normal-height . 1.0) (normal-width . 1.0) (buffer "frame.c" (selected . t) (hscroll . 0) (fringes 0 0 nil) (margins 6) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 776) (start . 1))))])
+(setq desktop-saved-frameset [frameset 1 (23339 48577 441952 406000) (desktop . "208") "covinga@honeydew" nil nil ((((font-backend xft x) (font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1") (font-parameter . "Monospace 11") (border-width . 0) (internal-border-width . 0) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "#f8fbfc") (background-color . "#242728") (mouse-color . "#f8fbfc") (border-color . "#373b41") (screen-gamma) (line-spacing) (left-fringe . 8) (right-fringe . 8) (scroll-bar-foreground) (scroll-bar-background) (menu-bar-lines . 0) (tool-bar-lines . 0) (title) (wait-for-wm . t) (tool-bar-position . top) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (scroll-bar-height . 0) (alpha) (fullscreen . fullboth) (display-type . color) (background-mode . dark) (cursor-color . "#f8fbfc") (sticky) (environment) (powerline-cache) (frameset--id . "A049-3BAD-9F22-2F08") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (icon-name) (display . ":0.0") (explicit-name) (fullscreen-restore) (visibility . t) (height . 66) (width . 211) (left . 1080) (top . 109)) ((min-height . 4) (min-width . 10) (min-height-ignore . 3) (min-width-ignore . 10) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 72) (min-pixel-width . 90) (min-pixel-height-ignore . 54) (min-pixel-width-ignore . 90) (min-pixel-height-safe . 18) (min-pixel-width-safe . 18)) leaf (pixel-width . 1920) (pixel-height . 1182) (total-width . 213) (total-height . 65) (normal-height . 1.0) (normal-width . 1.0) (buffer ".emacs" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins 6) (scroll-bars nil 0 t nil 0 t) (vscroll . 0) (dedicated) (point . 1576) (start . 1564))))])
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("fram" "helm" "I hav" "RecordExp" "transTy" "recordE" "vardec co" "to_term" "resident(" "activity_date" "year_range" "room_digi" "resident" "is_ret" "sr" "Person("))
-(setq regexp-search-ring nil)
-(setq register-alist (list (list 50 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,nil (get-buffer ," *temp*")))) mk)) (list 49 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,nil (get-buffer ," *temp*")))) mk))))
-(setq file-name-history '("~/Downloads/frame.h" "~/450/tiger_compiler/chap6/frame.c" "~/450/tiger_compiler/chap6/amd64frame.c" "~/450/tiger_compiler/chap6/makefile" "~/Downloads/amd64frame.c" "~/Downloads/amd64frame.sml" "~/450/tiger_compiler/chap6/frame.c" "~/450/tiger_compiler/chap6/translate.c" "~/450/tiger_compiler/chap6/temp.h" "~/450/tiger_compiler/chap6/util.h" "~/450/tiger_compiler/chap6/frame.c" "~/450/tiger_compiler/chap6/translate.c" "~/450/tiger_compiler/chap6/translate.h" "~/450/tiger_compiler/chap6/frame.h" "~/450/tiger_compiler/chap6/translate.h" "~/450/tiger_compiler/chap6/semant.c" "~/450/tiger_compiler/chap6/frame.h" "~/450/tiger_compiler/chap6/frame.c" "~/.emacs" "~/450/tiger_compiler/chap5/env.c" "~/450/tiger_compiler/chap5/a.tig" "~/450/tiger_compiler/chap5/b.tig" "~/450/tiger_compiler/chap5/tiger.grm" "~/450/tiger_compiler/chap5matt/b.tig" "~/450/tiger_compiler/chap5/b.tig" "~/450/tiger_compiler/chap5/a.tig" "~/450/tiger_compiler/chap5/b.tig" "~/450/tiger_compiler/chap5matt/env.c" "~/450/tiger_compiler/chap5matt/types.h" "~/450/tiger_compiler/chap5/semant.c" "~/450/tiger_compiler/chap5matt/absyn.c" "~/450/tiger_compiler/chap5matt/symbol.h" "~/450/tiger_compiler/chap5matt/tiger.grm" "~/450/tiger_compiler/chap5matt/symbol.h" "~/450/tiger_compiler/chap5/semant.c" "~/450/tiger_compiler/chap5matt/" "~/450/tiger_compiler/chap5matt/semant.h" "~/450/tiger_compiler/chap5/semant.c" "~/450/tiger_compiler/chap5matt/absyn.h" "~/.emacs" "~/450/tiger_compiler/chap5matt/semant.c" "/ssh:covinga@nari:/home/covinga/resnet/modules/askrestek/askrestek/js/app.js" "/ssh:covinga@nari:/home/covinga/resnet/modules/askrestek/askrestek/html/askrestek.html" "/ssh:covinga@nari:~/resnet/modules/askrestek/askrestek/routes.py" "/ssh:covinga@nari:/var/log/messages" "~/trello-frontend/node_modules/cas-authentication/index.js" "~/trello-frontend/app.js" "/ssh:covinga@nari:~/django/wwu_housing/data/booking.py" "~/bookings.todo" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/data/starrez_connector.py" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/keymanager/views.py" "/ssh:covinga@nari:~/django/wwu_housing/data/booking.py" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/keymanager/views.py" "/ssh:covinga@nari:~/django/wwu_housing/data/booking.py" "~/.emacs" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/keymanager/views.py" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/data/person.py" "/ssh:covinga@nari:~/django/wwu_housing/data/booking.py" "/ssh:covinga@nari:/home/covinga/trello-backend/rest_client" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/data/booking.py" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/keymanager/urls.py" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/keymanager/templates/keymanager/resident.html" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/keymanager/views.py" "/ssh:covinga@nari:~/django/wwu_housing/data/starrez_connector.py" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/keymanager/views.py" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/data/starrez_connector.py" "/ssh:covinga@nari:~/django/wwu_housing/data/person.py" "~/.nvm/versions/node/v8.4.0/lib/node_modules/nodemon/bin/nodemon.js" "~/wwu-university-residences-style-guide/package.json" "/ssh:covinga@nari:~/trello-backend/rest_client" "~/trello-backend/app.js" "~/wwu-university-residences-style-guide/gulpfile.js" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/data/person.py" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/keymanager/views.py" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/data/starrez_connector.py" "/ssh:covinga@nari:~/trello-backend/rest_client" "/ssh:covinga@nari:/home/covinga/resnet/modules/answerline/answerline/js/globals.js" "/ssh:covinga@nari:/home/covinga/resnet/modules/answerline/answerline/js/views/ticket.js" "/ssh:covinga@nari:~/resnet/modules/answerline/answerline/route_modules/quarantine.py" "/ssh:covinga@linux.cs.wwu.edu#922:/home/covinga/405/hw2/g1.txt" "/ssh:covinga@linux.cs.wwu.edu#922:/home/covinga/405/hw2/g2.txt" "/ssh:covinga@linux.cs.wwu.edu#922:~/405/hw2/GraphCycle.java" "~/.emacs" "/ssh:covinga@nari:/home/covinga/sr.rest" "/ssh:covinga@nari:~/trello-backend/rest_client" "/ssh:covinga@nari:~/resnet/modules/answerline/answerline/html/answerline.html" "/ssh:covinga@nari:/home/housingtest/trello/trello-frontend/app.js" "/ssh:covinga@nari:/home/housingtest/trello/trello-frontend/config.js" "~/trello-frontend/app.js" "/ssh:covinga@nari:~/trello-backend/rest_client" "/ssh:covinga@linux.cs.wwu.edu#922:~/415/Assgn1/Assignment1.pdf" "/ssh:covinga@nari:/home/covinga/django/wwu_housing/data/person.py" "/ssh:covinga@nari:~/django/wwu_housing/keymanager/templates/keymanager/resident.html" "/ssh:covinga@linux.cs.wwu.edu#922|ssh:covinga@cluster.cs.wwu.edu#922|ssh:covinga@c-0-6:/cluster/home/covinga/CS415/Assign1/pi/computing_pi.c" "/ssh:covinga@linux.cs.wwu.edu#922|ssh:covinga@cluster.cs.wwu.edu#922|ssh:covinga@c-0-6:~/CS415/Assign1/affinity/affinity_test.sh" "/ssh:covinga@linux.cs.wwu.edu#922:/home/covinga/347/Jacobi/testJacobi.sh" "/ssh:covinga@linux.cs.wwu.edu#922:/home/covinga/415/Assgn1/affinity_test.sh" "/ssh:covinga@linux.cs.wwu.edu#922:~/347/Jacobi/jacobi.c" "/ssh:covinga@linux.cs.wwu.edu#922:~/415/Assgn1/Assignment1.pdf" "/ssh:covinga@linux.cs.wwu.edu#922|ssh:covinga@cluster.cs.wwu.edu#922|ssh:covinga@c-0-6:~/CS415/Assign1/affinity/affinity_example.c"))
+(setq search-ring '("desktop" "buffer" "colo" "PATH" "flychec" "load" "obj" "get_it" "obj_" "Term" "term" "resident" "mouse" "side" "obje" "comma"))
+(setq regexp-search-ring '("login" "get" "Star" "thee"))
+(setq register-alist (list '(48 . "server: \"ldap://ldap.ad.wwu.edu:389\",\n	bindDN: \"cn=ldapqueryuser3,cn=builtin,dc=univ,dc=dir,dc=wwu,dc=edu\",\n	bindCredentials: \"ZqWT3GtFVz7jrBfNjHKmjxnAkcxwxbam\",\n	searchBase: \"dc=univ,dc=dir,dc=wwu,dc=edu\"\n") (list 50 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,nil (get-buffer ," *temp*")))) mk)) (list 49 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,nil (get-buffer ," *temp*")))) mk))))
+(setq file-name-history '("~/.emacs" "~/notes.org" "/ssh:nari:/home/covinga/django/wwu_housing/settings.py" "/ssh:nari:/home/covinga/django/wwu_housing/keymanager/templatetags/keymanager_tags.py" "/ssh:nari:/home/covinga/django/wwu_housing/keymanager/templates/keymanager/resident.html" "/ssh:nari:/home/covinga/django/wwu_housing/settings.py" "/ssh:nari:/home/covinga/django/wwu_housing/keymanager/management/commands/email_templates/bw_daily_digest.html" "/ssh:nari:~/django/wwu_housing/keymanager/management/commands/bw_daily_digest.py" "/ssh:nari:/home/covinga/resnet/modules/answerline/answerline/js/views/new_quarantine.js" "/ssh:nari:/home/covinga/resnet/modules/answerline/answerline/js/views/dashboard.js" "/ssh:nari:~/resnet/modules/answerline/answerline/js/views/student.js" "/ssh:nari:~/django/wwu_housing/keymanager/views.py" "~/rt-ldap/rt_ldap.js" "~/.emacs" "~/.local/share/xfce4/terminal/colorschemes" "~/rt-ldap/rt_ldap.js" "~/.emacs" "/ssh:nari:~/ldap_test/rt-ldap/rt_ldap.js" "/ssh:nari:~/.bashrc" "~/.bashrc" "~/.emacs" "~/rt-ldap/rt_ldap.js" "~/.bash_profile" "~/.profile" "~/.bashrc" "~/.emacs" "~/rt-ldap/rt_ldap.js" "~/.profile" "~/.bashrc" "~/rt-ldap/rt_ldap.js" "~/.emacs" "~/.eslintrc" "/ssh:nari:/home/covinga/ldap_test/rt-ldap/README.md" "/ssh:nari:/home/covinga/ldap_test/test.js" "/ssh:nari:/home/covinga/ldap_test/rt-ldap/rt_ldap.js" "~/rt-ldap/package.json" "/ssh:nari:~/ldap_test/test.js" "~/rt-ldap/README.md" "/ssh:nari:~/django/wwu_housing/keymanager/management/commands/bw_daily_digest.py" "/ssh:nari:/usr/local/etc/connection_settings.json" "/ssh:nari:/home/covinga/resnet/modules/answerline/answerline/js/views/new_ticket.js" "/ssh:nari:~/resnet/modules/answerline/answerline/html/templates/new_quarantine_form.html" "/ssh:nari:/home/covinga/resnet/modules/answerline/answerline/js/views/new_quarantine.js" "/ssh:nari:~/resnet/modules/answerline/answerline/js/views/student.js" "~/guest-wifi/guest_wifi_config.json" "~/star-cache/config.json" "~/star-cache/star_cache.js" "~/star-cache/config.json" "~/guest-wifi/guest_wifi.js" "/ssh:nari:/home/covinga/ldap_test/test.js" "~/.emacs" "/ssh:nari:/home/covinga/ldap_test/rt-ldap/rt_ldap.js" "/ssh:nari:~/ldap_test/test.js" "~/star-cache/star_cache.js" "~/star-cache/" "~/rt-ldap/index.js" "~/rt-ldap/package.json" "/ssh:nari:/home/covinga/.bashrc" "/ssh:nari:/home/covinga/ldap_test/rt-ldap/rt_ldap.js" "~/rt-ldap/index.js" "/ssh:nari:/home/covinga/ldap_test/rt-ldap/rt_ldap.js" "/ssh:nari:~/ldap_test/test.js" "~/rt-ldap/rt_ldap.js" "~/rt-ldap/README.md" "~/ldap_test/README.md" "~/ldap_test/package.json" "~/star-cache/package.json" "/ssh:nari:/usr/local/etc/connection_settings.json" "~/ldap_test/rt_ldap.js" "/ssh:nari:/home/covinga/django/wwu_housing/keymanager/templates/keymanager/report/extra_keys.html" "/ssh:nari:/home/covinga/django/wwu_housing/keymanager/templates/keymanager/index.html" "/ssh:nari:/home/covinga/django/wwu_housing/keymanager/templates/keymanager/report/extra_keys.html" "/ssh:nari:/home/covinga/django/wwu_housing/keymanager/templatetags/keymanager_tags.py" "/ssh:nari:/home/covinga/django/wwu_housing/keymanager/templates/keymanager/resident.html" "/ssh:nari:/home/covinga/django/wwu_housing/data/term.py" "/ssh:nari:~/django/wwu_housing/keymanager/views.py" "~/star-cache/table.js" "~/star-cache/star_cache.js" "~/.tmux.conf" "~/ldap_test/index.js" "/ssh:nari:~/django/wwu_housing/keymanager/templates/keymanager/resident.html" "~/ldap_test/restek_ldap.js" "~/trello-backend/app.js" "~/star-cache/star_cache.js" "~/ldap_test/restek_ldap.js" "~/.tmux.conf" "/ssh:nari:~/notes.org" "~/.emacs" "/ssh:nari:~/notes.org" "~/.emacs" "/ssh:nari:~/notes.org" "~/.emacs" "~/ldap_test/restek_ldap.js" "~/.tmux.conf" "~/star-cache/star_cache.js" "~/.emacs" "/ssh:nari:/home/covinga/django/wwu_housing/ldapauth/utils.py" "/ssh:nari:~/django/wwu_housing/ldapauth/ldap_objects.py" "/ssh:nari:/home/covinga/django/wwu_housing/ldapauth/ldap_objects.py" "/ssh:nari:/home/covinga/django/wwu_housing/ldapauth/models.py"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
-(desktop-create-buffer 206
-  "/home/covinga/450/tiger_compiler/chap6/frame.c"
-  "frame.c"
-  'c-mode
-  '(abbrev-mode beacon-mode global-auto-revert-mode linum-mode)
-  776
+(desktop-create-buffer 208
+  "/home/covinga/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  '(beacon-mode global-auto-revert-mode helm-mode undo-tree-mode auto-complete-mode linum-mode hs-minor-mode)
+  1576
+  '(9570 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix))
+  '((mark-ring (1567 11962 8895 6894 4664 2982 1))))
+
+(desktop-create-buffer 208
+  "/home/covinga/notes.org"
+  "notes.org"
+  'org-mode
+  '(beacon-mode global-auto-revert-mode helm-mode undo-tree-mode)
+  1
   '(1 nil)
   nil
   nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/covinga/450/tiger_compiler/chap6/amd64frame.c"
-  "amd64frame.c"
-  'c-mode
-  '(abbrev-mode beacon-mode global-auto-revert-mode linum-mode hs-minor-mode)
-  1443
-  '(1620 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/covinga/Downloads/frame.h"
-  "frame.h"
-  'c-mode
-  '(abbrev-mode beacon-mode global-auto-revert-mode)
-  24
-  '(nil nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/covinga/450/tiger_compiler/chap6/makefile"
-  "makefile"
-  'makefile-gmake-mode
-  '(beacon-mode global-auto-revert-mode)
-  527
-  '(527 nil)
-  nil
-  nil
-  '((indent-tabs-mode . t) (buffer-file-coding-system . undecided-dos)))
-
-(desktop-create-buffer 206
-  "/home/covinga/450/tiger_compiler/chap6/translate.c"
-  "translate.c"
-  'c-mode
-  '(abbrev-mode beacon-mode global-auto-revert-mode)
-  100
-  '(100 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t))
+  '((mark-ring (1))))
 
