@@ -1,12 +1,3 @@
-cd /ssh:covinga@nari
-cd /ssh:covinga@nari:
-workon resnet
-exit
-cd /ssh:covinga@nari:
-PATH
-$Path
-$PATH
-workon django
 exit
 ssh
 ssh nari
@@ -119,3 +110,19 @@ exit
 fish
 fish
 bash
+fish
+fish
+fish
+exit
+fish
+fish
+fish
+fish
+fish
+fish
+exit
+fish
+fish
+fish
+fish
+fish

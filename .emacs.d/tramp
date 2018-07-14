@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <18/06/27 17:46:25 /home/covinga/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <18/07/12 16:49:25 /home/covinga/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -192,6 +192,5 @@
   ("id" "/usr/bin/id")
   ("gid-string" "users")
   ("gid-integer" 100)
-  ("uid-integer" 1107))
- (["scp" nil "ssh" nil nil]
-  nil))
+  ("uid-integer" 1107)
+  ("env-u-option" t)))
