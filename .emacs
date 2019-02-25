@@ -136,6 +136,10 @@
   :ensure t
   :config (elscreen-start))
 
+;; Multi-term
+(use-package multi-term
+	:ensure t)
+
 ;; Setting up some macros
 (evil-leader/set-key "f" #'helm-find-files)
 (evil-leader/set-key "s" 'save-buffer)
@@ -164,6 +168,7 @@
 (evil-leader/set-key "7" '(lambda () (interactive) (elscreen-goto 7)))
 (evil-leader/set-key "8" '(lambda () (interactive) (elscreen-goto 8)))
 (evil-leader/set-key "9" '(lambda () (interactive) (elscreen-goto 9)))
+(evil-leader/set-key "t" '(lambda () (interactive) (elscreen-create) (multi-term)))
 
 ;; File backups
 (setq backup-by-copying t      ; don't clobber symlinks
