@@ -131,6 +131,11 @@
 							     (interactive)
 							     (evil-delete (point-at-bol) (point)))))))
 
+;; Elscreen (for tabs)
+(use-package elscreen
+  :ensure t
+  :config (elscreen-start))
+
 ;; Setting up some macros
 (evil-leader/set-key "f" #'helm-find-files)
 (evil-leader/set-key "s" 'save-buffer)
@@ -145,6 +150,20 @@
 (evil-leader/set-key "b" 'helm-buffers-list)
 (evil-leader/set-key "d" 'kill-buffer)
 (evil-leader/set-key "x" 'delete-window)
+(evil-leader/set-key "c" 'elscreen-create)
+(evil-leader/set-key "v" 'elscreen-kill)
+(evil-leader/set-key "n" 'elscreen-next)
+(evil-leader/set-key "p" 'elscreen-previous)
+(evil-leader/set-key "0" '(lambda () (interactive) (elscreen-goto 0)))
+(evil-leader/set-key "1" '(lambda () (interactive) (elscreen-goto 1)))
+(evil-leader/set-key "2" '(lambda () (interactive) (elscreen-goto 2)))
+(evil-leader/set-key "3" '(lambda () (interactive) (elscreen-goto 3)))
+(evil-leader/set-key "4" '(lambda () (interactive) (elscreen-goto 4)))
+(evil-leader/set-key "5" '(lambda () (interactive) (elscreen-goto 5)))
+(evil-leader/set-key "6" '(lambda () (interactive) (elscreen-goto 6)))
+(evil-leader/set-key "7" '(lambda () (interactive) (elscreen-goto 7)))
+(evil-leader/set-key "8" '(lambda () (interactive) (elscreen-goto 8)))
+(evil-leader/set-key "9" '(lambda () (interactive) (elscreen-goto 9)))
 
 ;; File backups
 (setq backup-by-copying t      ; don't clobber symlinks
