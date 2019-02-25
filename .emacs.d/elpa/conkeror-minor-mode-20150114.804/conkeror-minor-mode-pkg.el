@@ -1,1 +1,0 @@
-(define-package "conkeror-minor-mode" "20150114.804" "Mode for editing conkeror javascript files." 'nil :commit "476e81c27b056e21c192391fe674a2bf875466b0" :url "http://github.com/Bruce-Connor/conkeror-minor-mode" :keywords '("programming" "tools"))
