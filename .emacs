@@ -178,3 +178,8 @@
       kept-new-versions 6
       kept-old-versions 2
       version-control t)       ; use versioned backups
+
+;; Which-Key Reminders
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
