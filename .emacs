@@ -152,7 +152,7 @@
 (evil-leader/set-key "l" 'evil-window-right)
 (evil-leader/set-key "q" 'save-buffers-kill-emacs)
 (evil-leader/set-key "b" 'helm-buffers-list)
-(evil-leader/set-key "d" 'kill-buffer)
+(evil-leader/set-key "d" 'kill-this-buffer)
 (evil-leader/set-key "x" 'delete-window)
 (evil-leader/set-key "c" 'elscreen-create)
 (evil-leader/set-key "v" 'elscreen-kill)
