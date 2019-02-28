@@ -53,19 +53,19 @@
 	     (define-key helm-map (kbd "C-z") #'helm-select-action)
 	     (define-key helm-map (kbd "C-j") 'helm-next-line)
 	     (define-key helm-map (kbd "C-k") 'helm-previous-line)
-			 (add-to-list 'display-buffer-alist
-										`(,(rx bos "*helm" (* not-newline) "*" eos)
-											(display-buffer-in-side-window)
-											(inhibit-same-window . t)
-											(window-height . 0.25)))
-			 (setq helm-autoresize-max-height 30
-						 helm-autoresize-min-height 20))))
+	     (add-to-list 'display-buffer-alist
+			  `(,(rx bos "*helm" (* not-newline) "*" eos)
+			    (display-buffer-in-side-window)
+			    (inhibit-same-window . t)
+			    (window-height . 0.25)))
+	     (setq helm-autoresize-max-height 30
+		   helm-autoresize-min-height 20))))
 
 ;; Auto-Complete
 (use-package auto-complete
   :ensure t
   :config (progn (ac-config-default)
-								 (setq ac-auto-start t)))
+		 (setq ac-auto-start t)))
 
 ;; Line numbers
 (add-hook 'prog-mode-hook 'linum-mode)
@@ -79,9 +79,10 @@
 (use-package js2-mode
   :ensure t
   :config ((lambda ()
-						 (setq tab-width 2)
-						 (setq js-indent-level 2)
-						 (setq js-switch-indent-offset 2))))
+	     (add-hook 'auto-mode-alist '("\\.js\\'" . js2-mode))
+	     (setq tab-width 2)
+	     (setq js-indent-level 2)
+	     (setq js-switch-indent-offset 2))))
 
 ;; Flycheck (mostly for eslint)
 (use-package flycheck
@@ -116,9 +117,9 @@
 ;; Evil Leader (this needs to go before Evil setup)
 (use-package evil-leader
   :ensure t
-	:config ((lambda ()
-						 (global-evil-leader-mode)
-						 (evil-leader/set-leader "<SPC>"))))
+  :config ((lambda ()
+	     (global-evil-leader-mode)
+	     (evil-leader/set-leader "<SPC>"))))
 
 ;; Evil
 (use-package evil
@@ -183,3 +184,9 @@
 (use-package which-key
   :ensure t
   :config (which-key-mode))
+
+(use-package markdown-mode
+  :ensure t)
+
+(use-package dockerfile-mode
+	:ensure t)
