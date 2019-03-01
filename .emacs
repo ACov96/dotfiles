@@ -82,7 +82,8 @@
 	     (add-hook 'auto-mode-alist '("\\.js\\'" . js2-mode))
 	     (setq tab-width 2)
 	     (setq js-indent-level 2)
-	     (setq js-switch-indent-offset 2))))
+	     (setq js-switch-indent-offset 2)
+	     (setq-default indent-tabs-mode nil))))
 
 ;; Flycheck (mostly for eslint)
 (use-package flycheck
