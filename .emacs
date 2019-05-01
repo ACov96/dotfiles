@@ -26,10 +26,8 @@
 (use-package darkokai-theme
   :ensure t
   :config (load-theme 'darkokai t))
-(use-package smooth-scrolling
-  :ensure t
-  :init (setq smooth-scroll-margin 3)
-  :config (smooth-scrolling-mode 1))
+(setq scroll-step 1
+      scroll-conservatively 10000)
 
 ;; Mode Line stuffs
 ;(display-time 1)
@@ -61,19 +59,33 @@
 	     (setq helm-autoresize-max-height 30
 		   helm-autoresize-min-height 20))))
 
-;; Auto-Complete
-(use-package auto-complete
+;; Company mode for auto completion
+(use-package company
   :ensure t
-  :config (progn (ac-config-default)
-		 (setq ac-auto-start t)))
+  :config
+  (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+  (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)
+  (define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
+  (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
+  (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+  (setq company-dabbrev-downcase 0)
+  (setq company-idle-delay 0)
+  (add-hook 'after-init-hook 'global-company-mode))
 
 ;; Line numbers
-(add-hook 'prog-mode-hook 'linum-mode)
-(setq linum-format "%4d \u2502")
+(use-package linum-relative
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'linum-relative-mode)
+  (column-number-mode t)
+  (add-hook 'vue-mode-hook 'linum-relative-mode)
+  )
 
 ;; exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure t)
+
 
 ;; Javascript
 (use-package js2-mode
@@ -152,7 +164,7 @@
 (evil-leader/set-key "j" 'evil-window-down)
 (evil-leader/set-key "k" 'evil-window-up)
 (evil-leader/set-key "l" 'evil-window-right)
-(evil-leader/set-key "q" 'save-buffers-kill-emacs)
+(evil-leader/set-key "q" 'delete-frame)
 (evil-leader/set-key "b" 'helm-buffers-list)
 (evil-leader/set-key "d" 'kill-this-buffer)
 (evil-leader/set-key "x" 'delete-window)
@@ -171,6 +183,9 @@
 (evil-leader/set-key "8" '(lambda () (interactive) (elscreen-goto 8)))
 (evil-leader/set-key "9" '(lambda () (interactive) (elscreen-goto 9)))
 (evil-leader/set-key "t" '(lambda () (interactive) (elscreen-create) (multi-term)))
+(evil-leader/set-key "+" '(lambda () (interactive) (text-scale-increase)))
+(evil-leader/set-key "-" '(lambda () (interactive) (text-scale-decrease)))
+(evil-leader/set-key "#" 'linum-relative-toggle)
 
 ;; File backups
 (setq backup-by-copying t      ; don't clobber symlinks
@@ -195,3 +210,65 @@
 (use-package evil-surround
   :ensure t
   :config (global-evil-surround-mode 1))
+
+(use-package go-mode
+  :ensure t)
+
+(use-package org-bullets
+  :ensure t
+  :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package vue-mode
+  :ensure t)
+
+;; Transparency
+(set-frame-parameter (selected-frame) 'alpha '(85 . 85))
+(add-to-list 'default-frame-alist '(alpha . (85 . 85)))
+
+;; Fish shell specific
+(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
+(ansi-color-for-comint-mode-on)
+(use-package eterm-256color
+  :ensure t
+  :config (add-hook 'term-mode-hook #'eterm-256color-mode))
+(evil-set-initial-state 'term-mode 'emacs)
+
+(use-package tern
+  :ensure t
+  :config (add-hook 'js2-mode-hook 'tern-mode))
+
+(use-package company-tern
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-tern)
+  (add-hook 'js2-mode-hook 'company-mode)
+  (define-key tern-mode-keymap (kbd "M-.") nil)
+  (define-key tern-mode-keymap (kbd "M-,") nil))
+
+;; Neotree and project directory structure
+(use-package neotree
+  :ensure t
+  :config
+  (global-set-key [f8] 'neotree-toggle)
+  (add-hook 'neotree-mode-hook
+            (lambda ()
+              (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-quick-look)
+              (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+              (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "g") 'neotree-refresh)
+              (define-key evil-normal-state-local-map (kbd "n") 'neotree-next-line)
+              (define-key evil-normal-state-local-map (kbd "p") 'neotree-previous-line)
+              (define-key evil-normal-state-local-map (kbd "A") 'neotree-stretch-toggle)
+              (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+  )
+
+;; Code folding
+(hs-minor-mode t)
+
+;; Distractions...
+(use-package sudoku
+  :ensure t)
+(put 'dired-find-alternate-file 'disabled nil)
