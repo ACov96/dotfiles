@@ -266,9 +266,22 @@
   )
 
 ;; Code folding
-(hs-minor-mode t)
+(add-hook 'prog-mode-hook 'hs-minor-mode)
 
 ;; Distractions...
 (use-package sudoku
   :ensure t)
 (put 'dired-find-alternate-file 'disabled nil)
+
+;; Latex stuff
+(unless (package-installed-p 'auctex)
+  (package-refresh-contents)
+  (package-install 'auctex))
+(setq TeX-command-force "LaTeX")
+(add-hook 'LaTeX-mode-hook 'hs-minor-mode)
+(add-hook 'after-save-hook (lambda ()
+                             (when (equal major-mode 'latex-mode)
+                               (TeX-command-master nil))))
+
+;; Don't display async shell when launching external commands
+(add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
