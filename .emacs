@@ -285,3 +285,6 @@
 
 ;; Don't display async shell when launching external commands
 (add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+
+(use-package magit
+  :ensure t)
