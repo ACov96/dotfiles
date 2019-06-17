@@ -279,6 +279,7 @@
   (package-install 'auctex))
 (setq TeX-command-force "LaTeX")
 (add-hook 'LaTeX-mode-hook 'hs-minor-mode)
+(add-hook 'LaTeX-mode-hook 'linum-relative)
 (add-hook 'after-save-hook (lambda ()
                              (when (equal major-mode 'latex-mode)
                                (TeX-command-master nil))))
@@ -291,3 +292,17 @@
 
 (use-package evil-magit
   :ensure t)
+(evil-leader/set-key "g" 'magit-status)
+
+;; Eshell stuff
+(use-package shell-pop
+  :ensure t
+  :config
+  (shell-pop--set-shell-type "eshell"))
+
+;; Virtualenv
+(use-package virtualenvwrapper
+  :ensure t
+  :config
+  (venv-initialize-eshell)
+  (setq venv-location "~/.virtualenvs"))
