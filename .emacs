@@ -145,10 +145,54 @@
 							     (interactive)
 							     (evil-delete (point-at-bol) (point)))))))
 
-;; Elscreen (for tabs)
-(use-package elscreen
+;; Centaur tabs
+(use-package centaur-tabs
   :ensure t
-  :config (elscreen-start))
+  :config
+  (centaur-tabs-mode 1)
+  (setq centaur-tabs-style "bar"
+        centaur-tabs-set-modified-marker t
+        centaur-tabs-modified-marker "*")
+  (defun centaur-tabs-buffer-groups ()
+    "`centaur-tabs-buffer-groups' control buffers' group rules.
+
+    Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
+    All buffer name start with * will group to \"Emacs\".
+    Other buffer group by `centaur-tabs-get-group-name' with project name."
+    (list
+     (cond
+      ((or (string-equal "*" (substring (buffer-name) 0 1))
+           (memq major-mode '(magit-process-mode
+                              magit-status-mode
+                              magit-diff-mode
+                              magit-log-mode
+                              magit-file-mode
+                              magit-blob-mode
+                              magit-blame-mode
+                              )))
+       "Emacs")
+      ((derived-mode-p 'prog-mode)
+       "Editing")
+      ((memq major-mode '(vue-mode))
+       "Editing")
+      ((derived-mode-p 'dired-mode)
+       "Dired")
+      ((memq major-mode '(helpful-mode
+                          help-mode))
+       "Help")
+      ((memq major-mode '(org-mode
+                          org-agenda-clockreport-mode
+                          org-src-mode
+                          org-agenda-mode
+                          org-beamer-mode
+                          org-indent-mode
+                          org-bullets-mode
+                          org-cdlatex-mode
+                          org-agenda-log-mode
+                          diary-mode))
+       "OrgMode")
+      (t
+       (centaur-tabs-get-group-name (current-buffer)))))))
 
 ;; Multi-term
 (use-package multi-term
@@ -168,21 +212,8 @@
 (evil-leader/set-key "b" 'helm-buffers-list)
 (evil-leader/set-key "d" 'kill-this-buffer)
 (evil-leader/set-key "x" 'delete-window)
-(evil-leader/set-key "c" 'elscreen-create)
-(evil-leader/set-key "v" 'elscreen-kill)
-(evil-leader/set-key "n" 'elscreen-next)
-(evil-leader/set-key "p" 'elscreen-previous)
-(evil-leader/set-key "0" '(lambda () (interactive) (elscreen-goto 0)))
-(evil-leader/set-key "1" '(lambda () (interactive) (elscreen-goto 1)))
-(evil-leader/set-key "2" '(lambda () (interactive) (elscreen-goto 2)))
-(evil-leader/set-key "3" '(lambda () (interactive) (elscreen-goto 3)))
-(evil-leader/set-key "4" '(lambda () (interactive) (elscreen-goto 4)))
-(evil-leader/set-key "5" '(lambda () (interactive) (elscreen-goto 5)))
-(evil-leader/set-key "6" '(lambda () (interactive) (elscreen-goto 6)))
-(evil-leader/set-key "7" '(lambda () (interactive) (elscreen-goto 7)))
-(evil-leader/set-key "8" '(lambda () (interactive) (elscreen-goto 8)))
-(evil-leader/set-key "9" '(lambda () (interactive) (elscreen-goto 9)))
-(evil-leader/set-key "t" '(lambda () (interactive) (elscreen-create) (multi-term)))
+(evil-leader/set-key "n" 'centaur-tabs-forward)
+(evil-leader/set-key "p" 'centaur-tabs-backward)
 (evil-leader/set-key "+" '(lambda () (interactive) (text-scale-increase)))
 (evil-leader/set-key "-" '(lambda () (interactive) (text-scale-decrease)))
 (evil-leader/set-key "#" 'linum-relative-toggle)
@@ -224,26 +255,6 @@
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(85 . 85))
 (add-to-list 'default-frame-alist '(alpha . (85 . 85)))
-
-;; Fish shell specific
-(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
-(ansi-color-for-comint-mode-on)
-(use-package eterm-256color
-  :ensure t
-  :config (add-hook 'term-mode-hook #'eterm-256color-mode))
-(evil-set-initial-state 'term-mode 'emacs)
-
-(use-package tern
-  :ensure t
-  :config (add-hook 'js2-mode-hook 'tern-mode))
-
-(use-package company-tern
-  :ensure t
-  :config
-  (add-to-list 'company-backends 'company-tern)
-  (add-hook 'js2-mode-hook 'company-mode)
-  (define-key tern-mode-keymap (kbd "M-.") nil)
-  (define-key tern-mode-keymap (kbd "M-,") nil))
 
 ;; Neotree and project directory structure
 (use-package neotree
@@ -293,12 +304,6 @@
 (use-package evil-magit
   :ensure t)
 (evil-leader/set-key "g" 'magit-status)
-
-;; Eshell stuff
-(use-package shell-pop
-  :ensure t
-  :config
-  (shell-pop--set-shell-type "eshell"))
 
 ;; Virtualenv
 (use-package virtualenvwrapper
