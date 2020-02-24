@@ -279,11 +279,6 @@
 ;; Code folding
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
-;; Distractions...
-(use-package sudoku
-  :ensure t)
-(put 'dired-find-alternate-file 'disabled nil)
-
 ;; Latex stuff
 (unless (package-installed-p 'auctex)
   (package-refresh-contents)
@@ -311,3 +306,14 @@
   :config
   (venv-initialize-eshell)
   (setq venv-location "~/.virtualenvs"))
+
+;; Projectile
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode +1)
+  (setq projectile-completion-system 'helm
+        projectile-idle-timer-hook t))
+
+;; GDB Mode stuff
+(gdb-many-windows t)
