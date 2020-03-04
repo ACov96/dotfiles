@@ -315,5 +315,55 @@
   (setq projectile-completion-system 'helm
         projectile-idle-timer-hook t))
 
-;; GDB Mode stuff
-(gdb-many-windows t)
+;; 80 column line
+(use-package fill-column-indicator
+  :ensure t
+  :config
+  (setq fci-rule-width 3
+        fci-rule-color "gray"
+        fci-rule-column 80))
+
+;; Org mode configuration
+(add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
+(add-hook 'org-mode-hook 'auto-fill-mode)
+(add-hook 'org-mode-hook '(lambda () (electric-pair-mode nil)))
+(add-hook 'org-mode-hook '(lambda () (company-mode nil)))
+(add-hook 'org-mode-hook '(lambda () (fci-mode t)))
+
+;; Don't insert empty lines between org headings and items
+(setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+
+;; Org mode source block language evaluation
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (C . t)
+   (js . t)
+   (python . t)
+   (shell . t)
+   (latex . t)
+   (java . t)
+   (org . t)))
+
+;; Icons
+(use-package all-the-icons
+  :ensure t
+  :config
+  (let ((font-dest (cl-case window-system
+                     (x  (concat (or (getenv "XDG_DATA_HOME")            ;; Default Linux install directories
+                                     (concat (getenv "HOME") "/.local/share"))
+                                 "/fonts/"))
+                     (mac (concat (getenv "HOME") "/Library/Fonts/" ))
+                     (ns (concat (getenv "HOME") "/Library/Fonts/" )))))
+    (unless (file-exists-p (concat font-dest "all-the-icons.ttf"))
+      (all-the-icons-install-fonts t))))
+
+;; Dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-startup-banner 'logo
+        dashboard-set-heading-icons t
+        dashboard-set-file-icons t
+        dashboard-center-content t))
