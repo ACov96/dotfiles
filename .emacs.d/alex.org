@@ -1,0 +1,388 @@
+#+STARTUP: overview
+
+* use-package setup
+  #+BEGIN_SRC emacs-lisp
+    (unless (package-installed-p 'use-package)
+      (package-refresh-contents)
+      (package-install 'use-package))
+    (eval-when-compile
+      (require 'use-package))
+  #+END_SRC
+* Aesthetics
+  #+BEGIN_SRC emacs-lisp
+    (menu-bar-mode -1)
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)
+    (setq inhibit-splash-screen t)
+    (show-paren-mode t)
+    (electric-pair-mode t)
+    (hl-line-mode t)
+    (use-package darkokai-theme
+      :ensure t
+      :config (load-theme 'darkokai t))
+    (setq scroll-step 1
+          scroll-conservatively 10000)
+
+    ;; Nyan Cat is the most important package of all
+    (use-package nyan-mode
+      :ensure t
+      :config ((lambda ()
+                 (nyan-mode)
+                 (nyan-start-animation)
+                 (setq nyan-wavy-trail t))))
+
+    ;; Transparency
+    (set-frame-parameter (selected-frame) 'alpha '(85 . 85))
+    (add-to-list 'default-frame-alist '(alpha . (85 . 85)))
+
+    ;; Icons
+    (use-package all-the-icons
+      :ensure t
+      :config
+      (let ((font-dest (cl-case window-system
+                         (x  (concat (or (getenv "XDG_DATA_HOME")            ;; Default Linux install directories
+                                         (concat (getenv "HOME") "/.local/share"))
+                                     "/fonts/"))
+                         (mac (concat (getenv "HOME") "/Library/Fonts/" ))
+                         (ns (concat (getenv "HOME") "/Library/Fonts/" )))))
+        (unless (file-exists-p (concat font-dest "all-the-icons.ttf"))
+          (all-the-icons-install-fonts t))))
+
+    ;; 80 column line
+    (use-package fill-column-indicator
+      :ensure t
+      :config
+      (setq fci-rule-width 3
+            fci-rule-color "gray"
+            fci-rule-column 80))
+  #+END_SRC
+* Keyboard Shortcuts
+** Evil Mode
+   #+BEGIN_SRC emacs-lisp
+     ;; Evil Leader (this needs to go before Evil setup)
+     (use-package evil-leader
+       :ensure t
+       :config ((lambda ()
+                  (global-evil-leader-mode)
+                  (evil-leader/set-leader "<SPC>"))))
+
+     ;; Evil
+     (use-package evil
+       :ensure t
+       :config ((lambda ()
+                  (evil-mode 1)
+                  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+                  (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
+                  (define-key evil-insert-state-map (kbd "C-u") (lambda ()
+                                                                  (interactive)
+                                                                  (evil-delete (point-at-bol) (point)))))))
+
+     (use-package evil-surround
+       :ensure t
+       :config (global-evil-surround-mode 1))
+
+     (use-package evil-magit
+       :ensure t)
+     (evil-leader/set-key "g" 'magit-status)
+
+     ;; Setting up some macros
+     (evil-leader/set-key
+       "f" #'helm-find-files
+       "s" 'save-buffer
+       "-" 'evil-window-split
+       "/" 'evil-window-vsplit
+       "<SPC>" 'helm-M-x
+       "h" 'evil-window-left
+       "j" 'evil-window-down
+       "k" 'evil-window-up
+       "l" 'evil-window-right
+       "q" 'delete-frame
+       "b" 'helm-buffers-list
+       "d" 'kill-this-buffer
+       "x" 'delete-window
+       "n" 'centaur-tabs-forward
+       "p" 'centaur-tabs-backward
+       "+" '(lambda () (interactive) (text-scale-increase))
+       "-" '(lambda () (interactive) (text-scale-decrease))
+       "#" 'linum-relative-toggle
+       "'" 'eshell
+       "w" 'ace-window)
+   #+END_SRC
+** Helm
+   #+BEGIN_SRC emacs-lisp
+     ;; Helm
+     (use-package helm
+       :ensure t
+       :config ((lambda ()
+                  (global-set-key (kbd "M-x") 'helm-M-x)
+                  (global-set-key (kbd "C-x C-f") #'helm-find-files)
+                  (define-key helm-map (kbd "TAB") #'helm-execute-persistent-action)
+                  (define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
+                  (define-key helm-map (kbd "C-z") #'helm-select-action)
+                  (define-key helm-map (kbd "C-j") 'helm-next-line)
+                  (define-key helm-map (kbd "C-k") 'helm-previous-line)
+                  (add-to-list 'display-buffer-alist
+                               `(,(rx bos "*helm" (* not-newline) "*" eos)
+                                 (display-buffer-in-side-window)
+                                 (inhibit-same-window . t)
+                                 (window-height . 0.25)))
+                  (setq helm-autoresize-max-height 30
+                        helm-autoresize-min-height 20))))
+   #+END_SRC
+** Which Key
+   #+BEGIN_SRC emacs-lisp
+     (use-package which-key
+       :ensure t
+       :config (which-key-mode))
+   #+END_SRC
+** Movement
+   #+BEGIN_SRC emacs-lisp
+     ;; Window movement
+     (use-package ace-window
+       :ensure t)
+   #+END_SRC
+* Development
+** General Development Major Modes
+   #+BEGIN_SRC emacs-lisp
+     (use-package markdown-mode
+       :ensure t)
+
+     (use-package dockerfile-mode
+       :ensure t)
+
+     (use-package go-mode
+       :ensure t)
+
+     (use-package vue-mode
+       :ensure t)
+
+   #+END_SRC
+** General Development Utilities and Settings
+*** Git
+    #+BEGIN_SRC emacs-lisp
+      (use-package magit
+        :ensure t)
+    #+END_SRC
+*** Directory Navigation
+    #+BEGIN_SRC emacs-lisp
+      ;; Neotree and project directory structure
+      (use-package neotree
+        :ensure t
+        :config
+        (global-set-key [f8] 'neotree-toggle)
+        (add-hook 'neotree-mode-hook
+                  (lambda ()
+                    (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+                    (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-quick-look)
+                    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+                    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+                    (define-key evil-normal-state-local-map (kbd "g") 'neotree-refresh)
+                    (define-key evil-normal-state-local-map (kbd "n") 'neotree-next-line)
+                    (define-key evil-normal-state-local-map (kbd "p") 'neotree-previous-line)
+                    (define-key evil-normal-state-local-map (kbd "A") 'neotree-stretch-toggle)
+                    (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
+        (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+    #+END_SRC
+*** Line Numbers
+    #+BEGIN_SRC emacs-lisp
+      (use-package linum-relative
+        :ensure t
+        :config
+        (add-hook 'prog-mode-hook 'linum-relative-mode)
+        (column-number-mode t)
+        (add-hook 'vue-mode-hook 'linum-relative-mode))
+    #+END_SRC
+*** Cold Folding
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'prog-mode-hook 'hs-minor-mode)
+    #+END_SRC
+*** Project Management
+    #+BEGIN_SRC emacs-lisp
+      ;; Projectile
+      (use-package projectile
+        :ensure t
+        :config
+        (projectile-mode +1)
+        (setq projectile-completion-system 'helm
+              projectile-idle-timer-hook t))
+    #+END_SRC
+** Web Development
+   #+BEGIN_SRC emacs-lisp
+     ;; Javascript
+     (use-package js2-mode
+       :ensure t
+       :config ((lambda ()
+                  (add-hook 'auto-mode-alist '("\\.js\\'" . js2-mode))
+                  (setq tab-width 2)
+                  (setq js-indent-level 2)
+                  (setq js-switch-indent-offset 2)
+                  (setq-default indent-tabs-mode nil))))
+
+     ;; Flycheck (mostly for eslint)
+     (use-package flycheck
+       :ensure t
+       :config ((lambda () (add-hook 'js2-mode-hook (lambda () (flycheck-mode 1)))
+                  (setq-default flycheck-disabled-checkers
+                                (append flycheck-disabled-checkers
+                                        '(javascript-jshint)))
+                  (flycheck-add-mode 'javascript-eslint 'js2-mode)
+                  (setq-default flycheck-temp-prefix ".flycheck")
+                  (setq-default flycheck-disabled-checkers
+                                (append flycheck-disabled-checkers
+                                        '(json-jsonlist)))
+                  ;; use local eslint from node_modules before global
+                  ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
+                  (defun my/use-eslint-from-node-modules ()
+                    (let* ((root (locate-dominating-file
+                                  (or (buffer-file-name) default-directory)
+                                  "node_modules"))
+                           (eslint (and root
+                                        (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                                          root))))
+                      (when (and eslint (file-executable-p eslint))
+                        (setq-local flycheck-javascript-eslint-executable eslint))))
+                  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+                  (add-to-list 'exec-path "/home/covinga/.nvm/versions/node/v11.2.0/bin/")
+                  (setq shell-command-switch "-c")
+                  (exec-path-from-shell-initialize)
+                  (setq js2-mode-show-parse-errors nil)
+                  (setq js2-mode-show-strict-warnings nil))))
+   #+END_SRC
+** Python Development
+   #+BEGIN_SRC emacs-lisp
+     ;; Virtualenv
+     (use-package virtualenvwrapper
+       :ensure t
+       :config
+       (venv-initialize-eshell)
+       (setq venv-location "~/.virtualenvs"))
+   #+END_SRC
+* Auto Completion
+  #+BEGIN_SRC emacs-lisp
+    (use-package company
+      :ensure t
+      :config
+      (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+      (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)
+      (define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
+      (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
+      (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+      (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+      (setq company-dabbrev-downcase 0)
+      (setq company-idle-delay 0)
+      (add-hook 'after-init-hook 'global-company-mode))
+  #+END_SRC
+* Buffer Tabs
+  #+BEGIN_SRC emacs-lisp
+    ;; Centaur tabs
+    (use-package centaur-tabs
+      :ensure t
+      :config
+      (centaur-tabs-mode 1)
+      (setq centaur-tabs-style "bar"
+            centaur-tabs-set-modified-marker t
+            centaur-tabs-modified-marker "*")
+      (defun centaur-tabs-buffer-groups ()
+        "`centaur-tabs-buffer-groups' control buffers' group rules.
+
+        Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
+        All buffer name start with * will group to \"Emacs\".
+        Other buffer group by `centaur-tabs-get-group-name' with project name."
+        (list
+         (cond
+          ((or (string-equal "*" (substring (buffer-name) 0 1))
+               (memq major-mode '(magit-process-mode
+                                  magit-status-mode
+                                  magit-diff-mode
+                                  magit-log-mode
+                                  magit-file-mode
+                                  magit-blob-mode
+                                  magit-blame-mode))) "Emacs")
+          ((derived-mode-p 'prog-mode) "Editing")
+          ((memq major-mode '(vue-mode)) "Editing")
+          ((derived-mode-p 'dired-mode) "Dired")
+          ((memq major-mode '(helpful-mode help-mode)) "Help")
+          ((memq major-mode '(org-mode
+                              org-agenda-clockreport-mode
+                              org-src-mode
+                              org-agenda-mode
+                              org-beamer-mode
+                              org-indent-mode
+                              org-bullets-mode
+                              org-cdlatex-mode
+                              org-agenda-log-mode
+                              diary-mode)) "OrgMode")
+          (t (centaur-tabs-get-group-name (current-buffer)))))))
+  #+END_SRC
+* Emacs Behaviors
+  #+BEGIN_SRC emacs-lisp
+    ;; Detach the custom-file stuff from .emacs
+    (setq custom-file "~/.emacs.d/custom.el")
+    (load custom-file 'noerror)
+
+    ;; exec-path-from-shell
+    (use-package exec-path-from-shell
+      :ensure t)
+
+    ;; File backups
+    (setq backup-by-copying t      ; don't clobber symlinks
+          backup-directory-alist
+          '(("." . "~/.saves/"))    ; don't litter my fs tree
+          delete-old-versions t
+          kept-new-versions 6
+          kept-old-versions 2
+          version-control t)       ; use versioned backups
+
+    ;; Don't display async shell when launching external commands
+    (add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+
+    ;; Dashboard
+    (use-package dashboard
+      :ensure t
+      :config
+      (dashboard-setup-startup-hook)
+      (setq dashboard-startup-banner 'logo
+            dashboard-set-heading-icons t
+            dashboard-set-file-icons t
+            dashboard-center-content t))
+  #+END_SRC
+* Org
+  #+BEGIN_SRC emacs-lisp
+    (use-package org-bullets
+      :ensure t
+      :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+    ;; Org mode configuration
+    (add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
+    (add-hook 'org-mode-hook 'auto-fill-mode)
+    (add-hook 'org-mode-hook '(lambda () (electric-pair-mode nil)))
+    (add-hook 'org-mode-hook '(lambda () (company-mode nil)))
+    (add-hook 'org-mode-hook '(lambda () (fci-mode t)))
+
+    ;; Don't insert empty lines between org headings and items
+    (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+
+    ;; Org mode source block language evaluation
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (C . t)
+       (js . t)
+       (python . t)
+       (shell . t)
+       (latex . t)
+       (java . t)
+       (org . t)))
+  #+END_SRC
+* LaTeX
+  #+BEGIN_SRC emacs-lisp
+    (unless (package-installed-p 'auctex)
+      (package-refresh-contents)
+      (package-install 'auctex))
+    (setq TeX-command-force "LaTeX")
+    (add-hook 'LaTeX-mode-hook 'hs-minor-mode)
+    (add-hook 'LaTeX-mode-hook 'linum-relative)
+    (add-hook 'after-save-hook (lambda ()
+                                 (when (equal major-mode 'latex-mode)
+                                   (TeX-command-master nil))))
+  #+END_SRC
