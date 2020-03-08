@@ -119,51 +119,53 @@
    #+END_SRC
 * Aesthetics
   #+BEGIN_SRC emacs-lisp
-    (setq scroll-step 1
-          scroll-conservatively 10000
-          inhibit-splash-screen t)
-    (menu-bar-mode -1)
-    (tool-bar-mode -1)
-    (scroll-bar-mode -1)
-    (show-paren-mode t)
-    (electric-pair-mode t)
-    (hl-line-mode t)
-    (use-package darkokai-theme
-      :ensure t
-      :config (load-theme 'darkokai t))
+        (setq scroll-step 1
+              scroll-conservatively 10000
+              inhibit-splash-screen t)
+        (menu-bar-mode -1)
+        (tool-bar-mode -1)
+        (scroll-bar-mode -1)
+        (show-paren-mode t)
+        (electric-pair-mode t)
+        (hl-line-mode t)
+        (use-package darkokai-theme
+          :ensure t
+          :config (load-theme 'darkokai t))
 
-    ;; Nyan Cat is the most important package of all
-    (use-package nyan-mode
-      :ensure t
-      :config ((lambda ()
-                 (nyan-mode)
-                 (nyan-start-animation)
-                 (setq nyan-wavy-trail t))))
+        ;; Nyan Cat is the most important package of all
+        (use-package nyan-mode
+          :ensure t
+          :config
+          (nyan-mode)
+          (nyan-start-animation)
+          (setq nyan-wavy-trail t))
 
-    ;; Transparency
-    (set-frame-parameter (selected-frame) 'alpha '(85 . 85))
-    (add-to-list 'default-frame-alist '(alpha . (85 . 85)))
+        ;; Transparency
+        (defvar alex/transparency-alpha (or (frame-parameter (selected-frame) 'alpha)
+                                            85))
+        (set-frame-parameter (selected-frame) 'alpha alex/transparency-alpha)
+        (add-to-list 'default-frame-alist '(alpha . alex/transparency-alpha))
 
-    ;; Icons
-    (use-package all-the-icons
-      :ensure t
-      :config
-      (let ((font-dest (cl-case window-system
-                         (x  (concat (or (getenv "XDG_DATA_HOME")            ;; Default Linux install directories
-                                         (concat (getenv "HOME") "/.local/share"))
-                                     "/fonts/"))
-                         (mac (concat (getenv "HOME") "/Library/Fonts/" ))
-                         (ns (concat (getenv "HOME") "/Library/Fonts/" )))))
-        (unless (file-exists-p (concat font-dest "all-the-icons.ttf"))
-          (all-the-icons-install-fonts t))))
+        ;; Icons
+        (use-package all-the-icons
+          :ensure t
+          :config
+          (let ((font-dest (cl-case window-system
+                             (x  (concat (or (getenv "XDG_DATA_HOME")            ;; Default Linux install directories
+                                             (concat (getenv "HOME") "/.local/share"))
+                                         "/fonts/"))
+                             (mac (concat (getenv "HOME") "/Library/Fonts/" ))
+                             (ns (concat (getenv "HOME") "/Library/Fonts/" )))))
+            (unless (file-exists-p (concat font-dest "all-the-icons.ttf"))
+              (all-the-icons-install-fonts t))))
 
-    ;; 80 column line
-    (use-package fill-column-indicator
-      :ensure t
-      :config
-      (setq fci-rule-width 3
-            fci-rule-color "gray"
-            fci-rule-column 80))
+        ;; 80 column line
+        (use-package fill-column-indicator
+          :ensure t
+          :config
+          (setq fci-rule-width 3
+                fci-rule-color "gray"
+                fci-rule-column 80))
   #+END_SRC
 * Keyboard Shortcuts
 ** Evil Mode
@@ -180,13 +182,9 @@
          "\\" 'split-window-below
          "/" 'split-window-horizontally
          "<SPC>" 'helm-M-x
-         "h" 'evil-window-left
-         "j" 'evil-window-down
-         "k" 'evil-window-up
-         "l" 'evil-window-right
          "m" 'delete-other-windows
          "B" 'balance-windows
-         "q" 'kill-emacs
+         "q" 'save-buffers-kill-emacs
          "b" 'helm-buffers-list
          "d" 'kill-this-buffer
          "x" 'delete-window
@@ -200,7 +198,10 @@
          "i" 'info
          "c" 'alex/edit-config
          "r" 'alex/reload-config
-         "*" 'alex/scratch))
+         "*" 'alex/scratch
+         ">" 'alex/transparency-increase
+         "<" 'alex/transparency-decrease
+         "T" 'alex/transparency-toggle))
 
      ;; Evil
      (use-package evil
@@ -565,4 +566,25 @@
                       (magit-get-upstream-branch)
                       (magit-push-arguments)))
 
+    (defun alex/transparency-increase ()
+      "Increase the current frame's alpha value by +5"
+      (interactive)
+      (setq alex/transparency-alpha (min (+ alex/transparency-alpha 5)
+                                         100))
+      (set-frame-parameter (selected-frame) 'alpha alex/transparency-alpha))
+
+    (defun alex/transparency-decrease ()
+      "Decrease the current frame's alpha value by -5"
+      (interactive)
+      (setq alex/transparency-alpha (max (- alex/transparency-alpha 5)
+                                         0))
+      (set-frame-parameter (selected-frame) 'alpha alex/transparency-alpha))
+
+    (defun alex/transparency-toggle ()
+      "Toggles control of transparency between Emacs and the window manager."
+      (interactive)
+      (set-frame-parameter (selected-frame) 'alpha
+                           (if (eq 100 (frame-parameter (selected-frame) 'alpha))
+                               alex/transparency-alpha
+                             100)))
   #+END_SRC
