@@ -4,9 +4,9 @@
 #+STARTUP: overview
 
 * Overview
-  Because no one has intervened and now my Emacs configuration addiction has
-  gone out of control. So now my Emacs configuration has become quite large and
-  complex, which requires a more sophisticated organization of it all. 
+  No one has intervened and now my Emacs configuration addiction has gone out of
+  control. So now my Emacs configuration has become quite large and complex,
+  which requires a more sophisticated organization of it all.
 
   My solution is to start practicing [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]] and setup my
   configuration as an Org file. My goals are to:
