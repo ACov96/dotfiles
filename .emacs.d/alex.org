@@ -419,18 +419,15 @@
    #+END_SRC
 ** Auto Completion
    #+BEGIN_SRC emacs-lisp
-     (use-package company
+     (use-package auto-complete
        :ensure t
+       :bind
+       (:map ac-mode-map
+             ("M-j" . ac-next)
+             ("M-k" . ac-previous))
        :config
-       (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
-       (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)
-       (define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
-       (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
-       (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
-       (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
-       (setq company-dabbrev-downcase 0)
-       (setq company-idle-delay 0)
-       (add-hook 'after-init-hook 'global-company-mode))
+       (ac-config-default)
+       (setq ac-auto-start t))
    #+END_SRC
 * Emacs Behaviors
   #+BEGIN_SRC emacs-lisp
