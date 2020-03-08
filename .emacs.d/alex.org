@@ -529,6 +529,11 @@
      (setq eshell-prompt-function 'alex/eshell-prompt)
    #+END_SRC
 * alex/* Namespace
+  Not everything in the =alex/*= namespace lives here, but I try to put as much
+  of it as I can in here. Sometimes it makes more sense to put a variable or
+  function in a section that is a bit more descriptive ([[https://en.wikipedia.org/wiki/Principle_of_least_astonishment][Law of Least
+  Astonishment]]).
+
   #+BEGIN_SRC emacs-lisp
     (defun alex/edit-config ()
       "Open my config file in a buffer for editing."
