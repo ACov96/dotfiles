@@ -195,6 +195,7 @@
          "#" 'linum-relative-toggle
          "'" 'alex/eshell
          "w" 'ace-window
+         "j" 'ace-jump-mode
          "i" 'info
          "c" 'alex/edit-config
          "r" 'alex/reload-config
