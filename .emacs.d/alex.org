@@ -255,6 +255,10 @@
      ;; Window movement
      (use-package ace-window
        :ensure t)
+
+     ;; Movement in the buffer
+     (use-package ace-jump-mode
+       :ensure t)
    #+END_SRC
 * Development
 ** General Development Major Modes
