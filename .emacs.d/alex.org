@@ -554,4 +554,16 @@
         (pop-to-buffer "*eshell*" t)
         (eshell)))
 
+    (defvar alex/dotfiles-dir "~/dotfiles")
+    (defun alex/commit-config ()
+      "Commit my config to my dotfiles repository."
+      (interactive)
+      (copy-file "~/.emacs.d/alex.org"
+                 (concat (file-name-as-directory alex/dotfiles-dir) ".emacs.d/")
+                 t)
+      (let ((default-directory (file-name-as-directory alex/dotfiles-dir)))
+        (shell-command "git add -u")
+        (shell-command "git commit -m 'Updating config'")
+        (shell-command "git push origin master")))
+
   #+END_SRC
