@@ -561,11 +561,11 @@
       (copy-file "~/.emacs.d/alex.org"
                  (concat (file-name-as-directory alex/dotfiles-dir) ".emacs.d/")
                  t)
-      (let ((default-directory (file-name-as-directory alex/dotfiles-dir)))
-        (shell-command "git add -u")
-        (shell-command "git commit -m 'Updating config'")
-        (magit-git-push (magit-get-current-branch)
-                        (magit-get-upstream-branch)
-                        (magit-push-arguments))))
+      (cd alex/dotfiles-dir)
+      (shell-command "git add -u")
+      (shell-command "git commit -m 'Updating config'")
+      (magit-git-push (magit-get-current-branch)
+                      (magit-get-upstream-branch)
+                      (magit-push-arguments)))
 
   #+END_SRC
