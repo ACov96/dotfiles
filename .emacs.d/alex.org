@@ -564,6 +564,6 @@
       (let ((default-directory (file-name-as-directory alex/dotfiles-dir)))
         (shell-command "git add -u")
         (shell-command "git commit -m 'Updating config'")
-        (shell-command "git push origin master")))
+        (magit-commit)))
 
   #+END_SRC
