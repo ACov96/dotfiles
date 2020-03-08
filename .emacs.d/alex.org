@@ -1,27 +1,136 @@
+#+TITLE: Alex's Emacs Configuration
+#+AUTHOR: Alex Covington
+#+EMAIL: alex@covington.tech
 #+STARTUP: overview
 
-* use-package setup
-  #+BEGIN_SRC emacs-lisp
-    (unless (package-installed-p 'use-package)
-      (package-refresh-contents)
-      (package-install 'use-package))
-    (eval-when-compile
-      (require 'use-package))
-  #+END_SRC
+* Overview
+  Because no one has intervened and now my Emacs configuration addiction has
+  gone out of control. So now my Emacs configuration has become quite large and
+  complex, which requires a more sophisticated organization of it all. 
+
+  My solution is to start practicing [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]] and setup my
+  configuration as an Org file. My goals are to:
+  - Keep an organized and clean configuration
+  - Allow myself to easily update my configuration
+  - Quickly iterate over new ideas
+  - Inspire others to use Emacs!
+
+  This section describes my general workflow with Emacs and how to navigate this
+  configuration file in the event that you want to make edits, updates, or
+  changes. The remaining sections contain the actual configuration. Consider
+  this section as the documentation for my configuration.
+  
+  *This is not an Emacs tutorial nor is it a comprehensive list of all of my
+  packages*. This is just meant to be a reference in case someone stumbled
+  across my configuration and wanted to get an overview.
+
+** Workflow
+   I'm not the most seasoned Emacs user, but I've been using it for years and
+   have tried many of the drop-in Emacs distributions (Spacemacs, Doom, etc.),
+   and while I love many of their features, I find them either bloated or
+   working against my own mental models. On the other hand, vanilla Emacs
+   doesn't quite have enough right out of the box to compete with the other
+   editors out there, like Atom or VS Code.
+   
+   So I'm somewhere in the middle. I've decided to steal pieces that I like from
+   these pre-configured Emacs distributions and from other gurus online
+   (e.g. [[https://www.reddit.com/r/emacs][r/emacs]]). This sections gives an overview of how I navigate and use
+   Emacs for my day-to-day work.
+
+*** General Emacs Usage
+    I really like the Spacemacs idea of "layers" and driving Emacs using the
+    spacebar, so I've stolen that. In general, I think about the action I want
+    to perform, then press *SPC* (my leader key) to start an action, then press
+    the shortcut key for the action I want to perform.
+    
+    For example, say I want to open and edit a file. I can press:
+      
+      SPC f
+      
+    Which will then prompt me to type in a file path, then open the file for
+    editing in a buffer.
+    
+    If you can't remember a keyboard shortcut, not to worry! Just start as much
+    as you remember, and you'll be shown all of the possible completions of it.
+
+    If the action you want isn't bound to a shortcut, just press:
+
+      SPC SPC
+
+    Which will launch "M-x" (really helm-M-x, but that's details).
+
+*** Editing
+    Of course, I have to give my opinion on the whole "Vim vs Emacs" thing
+    regardless of whether you actually care. Obviously, I use (and prefer)
+    Emacs for many reasons, but those Vim people nailed it in terms of
+    navigation and editing.
+    
+    For most major modes, I have Vim keybindings on by default. A handful of
+    major modes (e.g. Gnus) disable Vim keybindings and just use the default
+    Emacs bindings, but I really try to stay in the Vim world as much as
+    possible. 
+    
+    Home row is */comfy/*.
+
+*** Programming
+    I first used Emacs because I needed an editor that had syntax highlighting
+    for Ada and I didn't know you could add packages to Atom to add support for
+    extra languages. Sometimes my ignorance truly is a blessing.
+
+    A majority of what I do is program (or something resembling programming), so
+    I need tools that support that endeavor. I've setup Emacs to support a
+    variety of languages and also have some language-specific settings to help
+    support other development environment things (e.g. virtualenv support for
+    Python). 
+    
+    I also generally use Eshell whenever I need a shell interface, whether it be
+    basic file management, navigation, or running shell programs.
+
+*** Document Writing
+    I do quite a bit of document writing and preparing presenations, so why not
+    make the most of Emacs to support this?
+    
+    I primarily create documents by creating and exporting an Org file or by
+    directly editing some kind of markup file (likely LaTeX or Markdown),
+    rendering it on save, and displaying a PDF within Emacs. This works ok, but
+    I'm definitely looking to improve this.
+
+** General Organization
+   I despise the Customization interface that Emacs tries to coax new users to
+   use, but we can definitely do better than just a plain Elisp file that's hard
+   to read and follow. My solution is to create my own configuration "interface"
+   using an Org file to organize my Elisp.
+
+   I've tried to organize everything into related groupings. Everything related
+   to development goes in the *Development* seciton, look and feel stuff is in
+   the *Aesthetics* section, etc. 
+
+   Within each section (and subsections), there are Elisp source blocks that
+   actually run my configurations. This is all started from [[./init.el][init.el]].
+   
+* Package Management
+** use-package setup
+   #+BEGIN_SRC emacs-lisp
+     (unless (package-installed-p 'use-package)
+       (package-refresh-contents)
+       (package-install 'use-package))
+     (eval-when-compile
+       (require 'use-package))
+   #+END_SRC
 * Aesthetics
   #+BEGIN_SRC emacs-lisp
+    (setq scroll-step 1
+          scroll-conservatively 10000
+          inhibit-splash-screen t)
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)
-    (setq inhibit-splash-screen t)
     (show-paren-mode t)
     (electric-pair-mode t)
     (hl-line-mode t)
     (use-package darkokai-theme
       :ensure t
       :config (load-theme 'darkokai t))
-    (setq scroll-step 1
-          scroll-conservatively 10000)
 
     ;; Nyan Cat is the most important package of all
     (use-package nyan-mode
@@ -62,72 +171,77 @@
      ;; Evil Leader (this needs to go before Evil setup)
      (use-package evil-leader
        :ensure t
-       :config ((lambda ()
-                  (global-evil-leader-mode)
-                  (evil-leader/set-leader "<SPC>"))))
+       :config 
+       (global-evil-leader-mode)
+       (evil-leader/set-leader "<SPC>")
+       (evil-leader/set-key
+         "f" #'helm-find-files
+         "s" 'save-buffer
+         "\\" 'split-window-below
+         "/" 'split-window-horizontally
+         "<SPC>" 'helm-M-x
+         "h" 'evil-window-left
+         "j" 'evil-window-down
+         "k" 'evil-window-up
+         "l" 'evil-window-right
+         "m" 'delete-other-windows
+         "B" 'balance-windows
+         "q" 'kill-emacs
+         "b" 'helm-buffers-list
+         "d" 'kill-this-buffer
+         "x" 'delete-window
+         "n" 'centaur-tabs-forward
+         "p" 'centaur-tabs-backward
+         "+" 'text-scale-increase
+         "-" 'text-scale-decrease
+         "#" 'linum-relative-toggle
+         "'" 'alex/eshell
+         "w" 'ace-window
+         "i" 'info
+         "c" 'alex/edit-config
+         "r" 'alex/reload-config
+         "*" 'alex/scratch))
 
      ;; Evil
      (use-package evil
        :ensure t
-       :config ((lambda ()
-                  (evil-mode 1)
-                  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-                  (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
-                  (define-key evil-insert-state-map (kbd "C-u") (lambda ()
-                                                                  (interactive)
-                                                                  (evil-delete (point-at-bol) (point)))))))
+       :bind (:map evil-normal-state-map
+                   ("C-u" . evil-scroll-up)
+                   :map evil-visual-state-map
+                   ("C-u" . evil-scroll-up)) 
+       :config 
+       (evil-mode 1))
 
      (use-package evil-surround
        :ensure t
        :config (global-evil-surround-mode 1))
 
      (use-package evil-magit
-       :ensure t)
-     (evil-leader/set-key "g" 'magit-status)
-
-     ;; Setting up some macros
-     (evil-leader/set-key
-       "f" #'helm-find-files
-       "s" 'save-buffer
-       "-" 'evil-window-split
-       "/" 'evil-window-vsplit
-       "<SPC>" 'helm-M-x
-       "h" 'evil-window-left
-       "j" 'evil-window-down
-       "k" 'evil-window-up
-       "l" 'evil-window-right
-       "q" 'delete-frame
-       "b" 'helm-buffers-list
-       "d" 'kill-this-buffer
-       "x" 'delete-window
-       "n" 'centaur-tabs-forward
-       "p" 'centaur-tabs-backward
-       "+" '(lambda () (interactive) (text-scale-increase))
-       "-" '(lambda () (interactive) (text-scale-decrease))
-       "#" 'linum-relative-toggle
-       "'" 'eshell
-       "w" 'ace-window)
+       :ensure t
+       :config
+       (evil-leader/set-key "g" 'magit-status))
    #+END_SRC
 ** Helm
    #+BEGIN_SRC emacs-lisp
      ;; Helm
      (use-package helm
        :ensure t
-       :config ((lambda ()
-                  (global-set-key (kbd "M-x") 'helm-M-x)
-                  (global-set-key (kbd "C-x C-f") #'helm-find-files)
-                  (define-key helm-map (kbd "TAB") #'helm-execute-persistent-action)
-                  (define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
-                  (define-key helm-map (kbd "C-z") #'helm-select-action)
-                  (define-key helm-map (kbd "C-j") 'helm-next-line)
-                  (define-key helm-map (kbd "C-k") 'helm-previous-line)
-                  (add-to-list 'display-buffer-alist
-                               `(,(rx bos "*helm" (* not-newline) "*" eos)
-                                 (display-buffer-in-side-window)
-                                 (inhibit-same-window . t)
-                                 (window-height . 0.25)))
-                  (setq helm-autoresize-max-height 30
-                        helm-autoresize-min-height 20))))
+       :bind
+       (("M-x" . helm-M-x)
+        ("C-x C-f" . helm-find-files)
+        :map helm-map
+        ("<tab>" . helm-execute-persistent-action)
+        ("C-z" . helm-select-action)
+        ("C-j" . helm-next-line)
+        ("C-k" . helm-previous-line))
+       :config 
+       (add-to-list 'display-buffer-alist
+                    `(,(rx bos "*helm" (* not-newline) "*" eos)
+                      (display-buffer-in-side-window)
+                      (inhibit-same-window . t)
+                      (window-height . 0.25)))
+       (setq helm-autoresize-max-height 30
+             helm-autoresize-min-height 20))
    #+END_SRC
 ** Which Key
    #+BEGIN_SRC emacs-lisp
@@ -168,8 +282,8 @@
       ;; Neotree and project directory structure
       (use-package neotree
         :ensure t
+        :bind (([f8] . neotree-toggle))
         :config
-        (global-set-key [f8] 'neotree-toggle)
         (add-hook 'neotree-mode-hook
                   (lambda ()
                     (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
@@ -178,7 +292,9 @@
                     (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
                     (define-key evil-normal-state-local-map (kbd "g") 'neotree-refresh)
                     (define-key evil-normal-state-local-map (kbd "n") 'neotree-next-line)
+                    (define-key evil-normal-state-local-map (kbd "j") 'neotree-next-line)
                     (define-key evil-normal-state-local-map (kbd "p") 'neotree-previous-line)
+                    (define-key evil-normal-state-local-map (kbd "k") 'neotree-previous-line)
                     (define-key evil-normal-state-local-map (kbd "A") 'neotree-stretch-toggle)
                     (define-key evil-normal-state-local-map (kbd "H") 'neotree-hidden-file-toggle)))
         (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
@@ -211,42 +327,43 @@
      ;; Javascript
      (use-package js2-mode
        :ensure t
-       :config ((lambda ()
-                  (add-hook 'auto-mode-alist '("\\.js\\'" . js2-mode))
-                  (setq tab-width 2)
-                  (setq js-indent-level 2)
-                  (setq js-switch-indent-offset 2)
-                  (setq-default indent-tabs-mode nil))))
+       :config 
+       (add-hook 'auto-mode-alist '("\\.js\\'" . js2-mode))
+       (setq tab-width 2
+             js-indent-level 2
+             js-switch-indent-offset 2)
+       (setq-default indent-tabs-mode nil))
 
      ;; Flycheck (mostly for eslint)
      (use-package flycheck
        :ensure t
-       :config ((lambda () (add-hook 'js2-mode-hook (lambda () (flycheck-mode 1)))
-                  (setq-default flycheck-disabled-checkers
-                                (append flycheck-disabled-checkers
-                                        '(javascript-jshint)))
-                  (flycheck-add-mode 'javascript-eslint 'js2-mode)
-                  (setq-default flycheck-temp-prefix ".flycheck")
-                  (setq-default flycheck-disabled-checkers
-                                (append flycheck-disabled-checkers
-                                        '(json-jsonlist)))
-                  ;; use local eslint from node_modules before global
-                  ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
-                  (defun my/use-eslint-from-node-modules ()
-                    (let* ((root (locate-dominating-file
-                                  (or (buffer-file-name) default-directory)
-                                  "node_modules"))
-                           (eslint (and root
-                                        (expand-file-name "node_modules/eslint/bin/eslint.js"
-                                                          root))))
-                      (when (and eslint (file-executable-p eslint))
-                        (setq-local flycheck-javascript-eslint-executable eslint))))
-                  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
-                  (add-to-list 'exec-path "/home/covinga/.nvm/versions/node/v11.2.0/bin/")
-                  (setq shell-command-switch "-c")
-                  (exec-path-from-shell-initialize)
-                  (setq js2-mode-show-parse-errors nil)
-                  (setq js2-mode-show-strict-warnings nil))))
+       :config
+       (add-hook 'js2-mode-hook (lambda () (flycheck-mode 1)))
+       (setq-default flycheck-disabled-checkers
+                     (append flycheck-disabled-checkers
+                             '(javascript-jshint)))
+       (flycheck-add-mode 'javascript-eslint 'js2-mode)
+       (setq-default flycheck-temp-prefix ".flycheck")
+       (setq-default flycheck-disabled-checkers
+                     (append flycheck-disabled-checkers
+                             '(json-jsonlist)))
+       ;; use local eslint from node_modules before global
+       ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
+       (defun my/use-eslint-from-node-modules ()
+         (let* ((root (locate-dominating-file
+                       (or (buffer-file-name) default-directory)
+                       "node_modules"))
+                (eslint (and root
+                             (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                               root))))
+           (when (and eslint (file-executable-p eslint))
+             (setq-local flycheck-javascript-eslint-executable eslint))))
+       (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+       (add-to-list 'exec-path "/home/covinga/.nvm/versions/node/v11.2.0/bin/")
+       (setq shell-command-switch "-c")
+       (exec-path-from-shell-initialize)
+       (setq js2-mode-show-parse-errors nil)
+       (setq js2-mode-show-strict-warnings nil))
    #+END_SRC
 ** Python Development
    #+BEGIN_SRC emacs-lisp
@@ -257,63 +374,64 @@
        (venv-initialize-eshell)
        (setq venv-location "~/.virtualenvs"))
    #+END_SRC
-* Auto Completion
-  #+BEGIN_SRC emacs-lisp
-    (use-package company
-      :ensure t
-      :config
-      (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
-      (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)
-      (define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
-      (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
-      (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
-      (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
-      (setq company-dabbrev-downcase 0)
-      (setq company-idle-delay 0)
-      (add-hook 'after-init-hook 'global-company-mode))
-  #+END_SRC
-* Buffer Tabs
-  #+BEGIN_SRC emacs-lisp
-    ;; Centaur tabs
-    (use-package centaur-tabs
-      :ensure t
-      :config
-      (centaur-tabs-mode 1)
-      (setq centaur-tabs-style "bar"
-            centaur-tabs-set-modified-marker t
-            centaur-tabs-modified-marker "*")
-      (defun centaur-tabs-buffer-groups ()
-        "`centaur-tabs-buffer-groups' control buffers' group rules.
+* User Interface
+** Buffer Tabs
+   #+BEGIN_SRC emacs-lisp
+     ;; Centaur tabs
+     (use-package centaur-tabs
+       :ensure t
+       :config
+       (centaur-tabs-mode 1)
+       (setq centaur-tabs-style "bar"
+             centaur-tabs-set-modified-marker t
+             centaur-tabs-modified-marker "*")
+       (defun centaur-tabs-buffer-groups ()
+         "`centaur-tabs-buffer-groups' control buffers' group rules.
 
-        Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
-        All buffer name start with * will group to \"Emacs\".
-        Other buffer group by `centaur-tabs-get-group-name' with project name."
-        (list
-         (cond
-          ((or (string-equal "*" (substring (buffer-name) 0 1))
-               (memq major-mode '(magit-process-mode
-                                  magit-status-mode
-                                  magit-diff-mode
-                                  magit-log-mode
-                                  magit-file-mode
-                                  magit-blob-mode
-                                  magit-blame-mode))) "Emacs")
-          ((derived-mode-p 'prog-mode) "Editing")
-          ((memq major-mode '(vue-mode)) "Editing")
-          ((derived-mode-p 'dired-mode) "Dired")
-          ((memq major-mode '(helpful-mode help-mode)) "Help")
-          ((memq major-mode '(org-mode
-                              org-agenda-clockreport-mode
-                              org-src-mode
-                              org-agenda-mode
-                              org-beamer-mode
-                              org-indent-mode
-                              org-bullets-mode
-                              org-cdlatex-mode
-                              org-agenda-log-mode
-                              diary-mode)) "OrgMode")
-          (t (centaur-tabs-get-group-name (current-buffer)))))))
-  #+END_SRC
+         Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
+         All buffer name start with * will group to \"Emacs\".
+         Other buffer group by `centaur-tabs-get-group-name' with project name."
+         (list
+          (cond
+           ((or (string-equal "*" (substring (buffer-name) 0 1))
+                (memq major-mode '(magit-process-mode
+                                   magit-status-mode
+                                   magit-diff-mode
+                                   magit-log-mode
+                                   magit-file-mode
+                                   magit-blob-mode
+                                   magit-blame-mode))) "Emacs")
+           ((derived-mode-p 'prog-mode) "Editing")
+           ((memq major-mode '(vue-mode)) "Editing")
+           ((derived-mode-p 'dired-mode) "Dired")
+           ((memq major-mode '(helpful-mode help-mode)) "Help")
+           ((memq major-mode '(org-mode
+                               org-agenda-clockreport-mode
+                               org-src-mode
+                               org-agenda-mode
+                               org-beamer-mode
+                               org-indent-mode
+                               org-bullets-mode
+                               org-cdlatex-mode
+                               org-agenda-log-mode
+                               diary-mode)) "OrgMode")
+           (t (centaur-tabs-get-group-name (current-buffer)))))))
+   #+END_SRC
+** Auto Completion
+   #+BEGIN_SRC emacs-lisp
+     (use-package company
+       :ensure t
+       :config
+       (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+       (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)
+       (define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
+       (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
+       (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+       (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+       (setq company-dabbrev-downcase 0)
+       (setq company-idle-delay 0)
+       (add-hook 'after-init-hook 'global-company-mode))
+   #+END_SRC
 * Emacs Behaviors
   #+BEGIN_SRC emacs-lisp
     ;; Detach the custom-file stuff from .emacs
@@ -385,4 +503,55 @@
     (add-hook 'after-save-hook (lambda ()
                                  (when (equal major-mode 'latex-mode)
                                    (TeX-command-master nil))))
+  #+END_SRC
+* Email
+  #+BEGIN_SRC emacs-lisp
+    (setq gnus-select-method '(nnimap "wwu"
+                                      (nnimap-address "outlook.office365.com")
+                                      (nnimap-server-port 993)
+                                      (nnimap-stream ssl))
+          gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date)
+          message-send-mail-function 'smtpmail-send-it
+          smtpmail-default-smtp-server "smtp.office365.com"
+          smtpmail-smtp-service 587)
+  #+END_SRC
+* Eshell
+** Prompt
+   #+BEGIN_SRC emacs-lisp
+     (defun alex/eshell-prompt ()
+       "My custom eshell prompt function."
+       (let ((cwd (eshell/pwd)))
+         (format "%s %s$ "
+                 (abbreviate-file-name cwd)
+                 (if (eq 0 (call-process "git" nil nil
+                                         nil "-C" cwd "rev-parse"))
+                     (format "(%s) " (string-trim (shell-command-to-string "git rev-parse --abbrev-ref HEAD")))
+                   ""))))
+
+     (setq eshell-prompt-function 'alex/eshell-prompt)
+   #+END_SRC
+* alex/* Namespace
+  #+BEGIN_SRC emacs-lisp
+    (defun alex/edit-config ()
+      "Open my config file in a buffer for editing."
+      (interactive)
+      (find-file "~/.emacs.d/alex.org"))
+
+    (defun alex/reload-config ()
+      "Reload my config file."
+      (interactive)
+      (org-babel-load-file "~/.emacs.d/alex.org"))
+
+    (defun alex/scratch ()
+      "Switch to the *scratch* buffer."
+      (interactive)
+      (switch-to-buffer (get-buffer "*scratch*")))
+
+    (defun alex/eshell ()
+      "Open eshell in a popup buffer"
+      (interactive)
+      (unless (string-equal (buffer-name) "*eshell*")
+        (pop-to-buffer "*eshell*" t)
+        (eshell)))
+
   #+END_SRC
