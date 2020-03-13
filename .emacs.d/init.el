@@ -7,4 +7,9 @@
 
 ;; Load the Org file
 (require 'org)
-(org-babel-load-file "~/.emacs.d/alex.org")
+(if (and (file-exists-p "~/.emacs.d/alex.el")
+         (file-newer-than-file-p "~/.emacs.d/alex.el" "~/.emacs.d/alex.org"))
+    (load "~/.emacs.d/alex")
+  (org-babel-load-file "~/.emacs.d/alex.org"))
+
+(put 'dired-find-alternate-file 'disabled nil)
