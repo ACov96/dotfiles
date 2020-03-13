@@ -483,7 +483,13 @@
      (when (display-graphic-p)
        (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
    #+END_SRC
-
+** Window Management
+   #+BEGIN_SRC emacs-lisp
+     (use-package eyebrowse
+       :ensure t
+       :config
+       (eyebrowse-mode t))
+   #+END_SRC
 * Emacs Behaviors
 ** Dashboard
    Start-up splash screen.
@@ -550,10 +556,14 @@
 
       (add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
       (add-hook 'org-mode-hook 'auto-fill-mode)
+      (add-hook 'org-mode-hook 'yas-minor-mode)
       (add-hook 'org-mode-hook '(lambda () (electric-pair-mode nil)))
       (add-hook 'org-mode-hook '(lambda () (company-mode nil)))
       (add-hook 'org-mode-hook '(lambda () (fci-mode t)))
       (add-hook 'org-mode-hook '(lambda () (org-bullets-mode 1)))
+
+      ;; Setup agenda files
+      (setq org-agenda-files (list "/ssh:wwu:~/ta/agenda.org"))
 
       ;; Use current window when editing src blocks
       (setq org-src-window-setup 'current-window)
