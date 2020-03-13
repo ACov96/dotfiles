@@ -117,56 +117,6 @@
      (eval-when-compile
        (require 'use-package))
    #+END_SRC
-* Aesthetics
-  #+BEGIN_SRC emacs-lisp
-        (setq scroll-step 1
-              scroll-conservatively 10000
-              inhibit-splash-screen t)
-        (menu-bar-mode -1)
-        (tool-bar-mode -1)
-        (scroll-bar-mode -1)
-        (show-paren-mode t)
-        (electric-pair-mode t)
-        (hl-line-mode t)
-        (use-package darkokai-theme
-          :ensure t
-          :config (load-theme 'darkokai t))
-
-        ;; Nyan Cat is the most important package of all
-        (use-package nyan-mode
-          :ensure t
-          :config
-          (nyan-mode)
-          (nyan-start-animation)
-          (setq nyan-wavy-trail t))
-
-        ;; Transparency
-        (defvar alex/transparency-alpha (or (frame-parameter (selected-frame) 'alpha)
-                                            85))
-        (set-frame-parameter (selected-frame) 'alpha alex/transparency-alpha)
-        (add-to-list 'default-frame-alist '(alpha . alex/transparency-alpha))
-
-        ;; Icons
-        (use-package all-the-icons
-          :ensure t
-          :config
-          (let ((font-dest (cl-case window-system
-                             (x  (concat (or (getenv "XDG_DATA_HOME")            ;; Default Linux install directories
-                                             (concat (getenv "HOME") "/.local/share"))
-                                         "/fonts/"))
-                             (mac (concat (getenv "HOME") "/Library/Fonts/" ))
-                             (ns (concat (getenv "HOME") "/Library/Fonts/" )))))
-            (unless (file-exists-p (concat font-dest "all-the-icons.ttf"))
-              (all-the-icons-install-fonts t))))
-
-        ;; 80 column line
-        (use-package fill-column-indicator
-          :ensure t
-          :config
-          (setq fci-rule-width 3
-                fci-rule-color "gray"
-                fci-rule-column 80))
-  #+END_SRC
 * Keyboard Shortcuts
 ** Evil Mode
    #+BEGIN_SRC emacs-lisp
@@ -215,10 +165,12 @@
        (evil-mode 1))
 
      (use-package evil-surround
+       :defer t
        :ensure t
        :config (global-evil-surround-mode 1))
 
      (use-package evil-magit
+       :defer t
        :ensure t
        :config
        (evil-leader/set-key "g" 'magit-status))
@@ -227,6 +179,7 @@
    #+BEGIN_SRC emacs-lisp
      ;; Helm
      (use-package helm
+       :defer t
        :ensure t
        :bind
        (("M-x" . helm-M-x)
@@ -237,6 +190,11 @@
         ("C-j" . helm-next-line)
         ("C-k" . helm-previous-line))
        :config 
+       (use-package helm-descbinds
+         :defer t
+         :ensure t
+         :bind (("C-h b" . helm-descbinds)
+                ("C-h w" . helm-descbinds)))
        (add-to-list 'display-buffer-alist
                     `(,(rx bos "*helm" (* not-newline) "*" eos)
                       (display-buffer-in-side-window)
@@ -248,6 +206,7 @@
 ** Which Key
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
+       :defer t
        :ensure t
        :config (which-key-mode))
    #+END_SRC
@@ -255,38 +214,44 @@
    #+BEGIN_SRC emacs-lisp
      ;; Window movement
      (use-package ace-window
+       :defer t
        :ensure t)
 
      ;; Movement in the buffer
      (use-package ace-jump-mode
+       :defer t
        :ensure t)
    #+END_SRC
 * Development
 ** General Development Major Modes
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
+       :defer t
        :ensure t)
 
      (use-package dockerfile-mode
+       :defer t
        :ensure t)
 
      (use-package go-mode
+       :defer t
        :ensure t)
 
      (use-package vue-mode
+       :defer t
        :ensure t)
-
    #+END_SRC
 ** General Development Utilities and Settings
 *** Git
     #+BEGIN_SRC emacs-lisp
       (use-package magit
+        :defer t
         :ensure t)
     #+END_SRC
 *** Directory Navigation
     #+BEGIN_SRC emacs-lisp
-      ;; Neotree and project directory structure
       (use-package neotree
+        :defer t
         :ensure t
         :bind (([f8] . neotree-toggle))
         :config
@@ -308,6 +273,7 @@
 *** Line Numbers
     #+BEGIN_SRC emacs-lisp
       (use-package linum-relative
+        :defer t
         :ensure t
         :config
         (add-hook 'prog-mode-hook 'linum-relative-mode)
@@ -322,18 +288,34 @@
     #+BEGIN_SRC emacs-lisp
       ;; Projectile
       (use-package projectile
+        :defer t
         :ensure t
         :config
         (projectile-mode +1)
         (setq projectile-completion-system 'helm
               projectile-idle-timer-hook t))
     #+END_SRC
+*** Snippets
+    #+BEGIN_SRC emacs-lisp
+      (use-package yasnippet
+        :defer t
+        :ensure t
+        :config
+        (use-package yasnippet-snippets
+          :ensure t)
+        (yas-reload-all)
+        (add-hook 'prog-mode-hook #'yas-minor-mode))
+    #+END_SRC
 ** Web Development
    #+BEGIN_SRC emacs-lisp
      ;; Javascript
      (use-package js2-mode
+       :defer t
        :ensure t
        :config 
+       (use-package js2-refactor
+         :defer t
+         :ensure t)
        (add-hook 'auto-mode-alist '("\\.js\\'" . js2-mode))
        (setq tab-width 2
              js-indent-level 2
@@ -342,6 +324,7 @@
 
      ;; Flycheck (mostly for eslint)
      (use-package flycheck
+       :defer t
        :ensure t
        :config
        (add-hook 'js2-mode-hook (lambda () (flycheck-mode 1)))
@@ -375,16 +358,24 @@
    #+BEGIN_SRC emacs-lisp
      ;; Virtualenv
      (use-package virtualenvwrapper
+       :defer t
        :ensure t
        :config
        (venv-initialize-eshell)
        (setq venv-location "~/.virtualenvs"))
    #+END_SRC
 * User Interface
+** Disable Default Interface
+   #+BEGIN_SRC emacs-lisp
+     (menu-bar-mode -1)
+     (tool-bar-mode -1)
+     (scroll-bar-mode -1)
+   #+END_SRC
 ** Buffer Tabs
    #+BEGIN_SRC emacs-lisp
      ;; Centaur tabs
      (use-package centaur-tabs
+       :defer t
        :ensure t
        :config
        (centaur-tabs-mode 1)
@@ -426,6 +417,7 @@
 ** Auto Completion
    #+BEGIN_SRC emacs-lisp
      (use-package auto-complete
+       :defer t
        :ensure t
        :bind
        (:map ac-mode-map
@@ -435,65 +427,179 @@
        (ac-config-default)
        (setq ac-auto-start t))
    #+END_SRC
-* Emacs Behaviors
+** Cursor
   #+BEGIN_SRC emacs-lisp
-    ;; Detach the custom-file stuff from .emacs
-    (setq custom-file "~/.emacs.d/custom.el")
-    (load custom-file 'noerror)
-
-    ;; exec-path-from-shell
-    (use-package exec-path-from-shell
-      :ensure t)
-
-    ;; File backups
-    (setq backup-by-copying t      ; don't clobber symlinks
-          backup-directory-alist
-          '(("." . "~/.saves/"))    ; don't litter my fs tree
-          delete-old-versions t
-          kept-new-versions 6
-          kept-old-versions 2
-          version-control t)       ; use versioned backups
-
-    ;; Don't display async shell when launching external commands
-    (add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
-
-    ;; Dashboard
-    (use-package dashboard
-      :ensure t
-      :config
-      (dashboard-setup-startup-hook)
-      (setq dashboard-startup-banner 'logo
-            dashboard-set-heading-icons t
-            dashboard-set-file-icons t
-            dashboard-center-content t))
+    (setq scroll-step 1
+          scroll-conservatively 10000
+          inhibit-splash-screen t)
+    (show-paren-mode t)
+    (electric-pair-mode t)
+    (hl-line-mode t)
   #+END_SRC
+** Aesthetics
+*** Nyan Cat
+    #+BEGIN_SRC emacs-lisp
+      ;; Nyan Cat is the most important package of all
+      (use-package nyan-mode
+        :defer t
+        :ensure t
+        :config
+        (nyan-mode)
+        (nyan-start-animation)
+        (setq nyan-wavy-trail t))
+    #+END_SRC
+*** 80 Column Display
+    #+BEGIN_SRC emacs-lisp
+      (use-package fill-column-indicator
+        :defer t
+        :ensure t
+        :config
+        (setq fci-rule-width 3
+              fci-rule-color "gray"
+              fci-rule-column 80))
+    #+END_SRC
+*** Default Transparency
+    #+BEGIN_SRC emacs-lisp
+      ;; Transparency
+      (defvar alex/transparency-alpha 85)
+      (set-frame-parameter (selected-frame) 'alpha alex/transparency-alpha)
+    #+END_SRC
+*** Color Theme
+    #+BEGIN_SRC emacs-lisp
+      (use-package darkokai-theme
+        :ensure t
+        :config (load-theme 'darkokai t))
+    #+END_SRC
+*** Icons
+    #+BEGIN_SRC emacs-lisp
+      (use-package all-the-icons
+        :defer t
+        :ensure t
+        :config
+        (let ((font-dest (cl-case window-system
+                           (x  (concat (or (getenv "XDG_DATA_HOME")            ;; Default Linux install directories
+                                           (concat (getenv "HOME") "/.local/share"))
+                                       "/fonts/"))
+                           (mac (concat (getenv "HOME") "/Library/Fonts/" ))
+                           (ns (concat (getenv "HOME") "/Library/Fonts/" )))))
+          (unless (file-exists-p (concat font-dest "all-the-icons.ttf"))
+            (all-the-icons-install-fonts t))))
+    #+END_SRC
+*** Show Indentation
+    #+BEGIN_SRC emacs-lisp
+      (use-package highlight-indentation
+        :defer t
+        :ensure t
+        :hook prog-mode-hook)
+    #+END_SRC
+*** Powerline                                                      :disabled:
+    Changing this usually requires a restart.
+    #+BEGIN_SRC emacs-lisp
+      (use-package powerline
+        :disabled
+        :ensure t
+        :config
+        (setq powerline-arrow-shape 'curve)
+        (powerline-center-theme))
+    #+END_SRC
+** UTF-8
+   #+BEGIN_SRC emacs-lisp
+     (prefer-coding-system 'utf-8)
+     (when (display-graphic-p)
+       (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+   #+END_SRC
+
+* Emacs Behaviors
+** Dashboard
+   Start-up splash screen.
+   #+BEGIN_SRC emacs-lisp
+     (use-package dashboard
+       :ensure t
+       :config
+       (dashboard-setup-startup-hook)
+       (setq dashboard-startup-banner 'logo
+             dashboard-set-heading-icons t
+             dashboard-set-file-icons t
+             dashboard-center-content t))
+   #+END_SRC
+** Customization
+   Sometimes, a package can *only* be configured through the
+   customization interface, so change where it saves that stuff.
+   #+BEGIN_SRC emacs-lisp
+     ;; Detach the custom-file stuff from .emacs
+     (setq custom-file "~/.emacs.d/custom.el")
+     (load custom-file 'noerror)
+   #+END_SRC
+** Auto-saves
+   #+BEGIN_SRC emacs-lisp
+     (setq backup-by-copying t      ; don't clobber symlinks
+           backup-directory-alist
+           '(("." . "~/.saves/"))    ; don't litter my fs tree
+           delete-old-versions t
+           kept-new-versions 6
+           kept-old-versions 2
+           version-control t)       ; use versioned backups
+   #+END_SRC
+** Get PATH
+   #+BEGIN_SRC emacs-lisp
+     (use-package exec-path-from-shell
+       :defer t
+       :ensure t)
+   #+END_SRC
+** Process Management
+   #+BEGIN_SRC emacs-lisp
+     ;; Don't display async shell when launching external commands
+     (add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+   #+END_SRC
+** TRAMP
+   #+BEGIN_SRC emacs-lisp
+     (defvar alex/tramp-limit 10000000)
+     (setq tramp-copy-size-limit alex/tramp-limit
+           tramp-inline-compress-start-size alex/tramp-limit)
+   #+END_SRC
+** Sentences
+   I'm in the "sentences end with a single space" group.
+   #+BEGIN_SRC emacs-lisp
+     (setq sentence-end-double-space nil)
+   #+END_SRC
+** Yes-or-No Prompts
+   #+BEGIN_SRC emacs-lisp
+     (fset 'yes-or-no-p 'y-or-n-p)
+   #+END_SRC
 * Org
   #+BEGIN_SRC emacs-lisp
-    (use-package org-bullets
+    (use-package org
+      :defer t
       :ensure t
-      :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+      :config
+      (use-package org-bullets
+        :defer t
+        :ensure t)
 
-    ;; Org mode configuration
-    (add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
-    (add-hook 'org-mode-hook 'auto-fill-mode)
-    (add-hook 'org-mode-hook '(lambda () (electric-pair-mode nil)))
-    (add-hook 'org-mode-hook '(lambda () (company-mode nil)))
-    (add-hook 'org-mode-hook '(lambda () (fci-mode t)))
+      (add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
+      (add-hook 'org-mode-hook 'auto-fill-mode)
+      (add-hook 'org-mode-hook '(lambda () (electric-pair-mode nil)))
+      (add-hook 'org-mode-hook '(lambda () (company-mode nil)))
+      (add-hook 'org-mode-hook '(lambda () (fci-mode t)))
+      (add-hook 'org-mode-hook '(lambda () (org-bullets-mode 1)))
 
-    ;; Don't insert empty lines between org headings and items
-    (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+      ;; Use current window when editing src blocks
+      (setq org-src-window-setup 'current-window)
 
-    ;; Org mode source block language evaluation
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       (C . t)
-       (js . t)
-       (python . t)
-       (shell . t)
-       (latex . t)
-       (java . t)
-       (org . t)))
+      ;; Don't insert empty lines between org headings and items
+      (setf org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+
+      ;; Org mode source block language evaluation
+      (org-babel-do-load-languages
+       'org-babel-load-languages
+       '((emacs-lisp . t)
+         (C . t)
+         (js . t)
+         (python . t)
+         (shell . t)
+         (latex . t)
+         (java . t)
+         (org . t))))
   #+END_SRC
 * LaTeX
   #+BEGIN_SRC emacs-lisp
