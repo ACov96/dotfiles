@@ -165,12 +165,10 @@
        (evil-mode 1))
 
      (use-package evil-surround
-       :defer t
        :ensure t
        :config (global-evil-surround-mode 1))
 
      (use-package evil-magit
-       :defer t
        :ensure t
        :config
        (evil-leader/set-key "g" 'magit-status))
@@ -179,7 +177,6 @@
    #+BEGIN_SRC emacs-lisp
      ;; Helm
      (use-package helm
-       :defer t
        :ensure t
        :bind
        (("M-x" . helm-M-x)
@@ -191,7 +188,6 @@
         ("C-k" . helm-previous-line))
        :config 
        (use-package helm-descbinds
-         :defer t
          :ensure t
          :bind (("C-h b" . helm-descbinds)
                 ("C-h w" . helm-descbinds)))
@@ -206,7 +202,6 @@
 ** Which Key
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
-       :defer t
        :ensure t
        :config (which-key-mode))
    #+END_SRC
@@ -214,44 +209,36 @@
    #+BEGIN_SRC emacs-lisp
      ;; Window movement
      (use-package ace-window
-       :defer t
        :ensure t)
 
      ;; Movement in the buffer
      (use-package ace-jump-mode
-       :defer t
        :ensure t)
    #+END_SRC
 * Development
 ** General Development Major Modes
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
-       :defer t
        :ensure t)
 
      (use-package dockerfile-mode
-       :defer t
        :ensure t)
 
      (use-package go-mode
-       :defer t
        :ensure t)
 
      (use-package vue-mode
-       :defer t
        :ensure t)
    #+END_SRC
 ** General Development Utilities and Settings
 *** Git
     #+BEGIN_SRC emacs-lisp
       (use-package magit
-        :defer t
         :ensure t)
     #+END_SRC
 *** Directory Navigation
     #+BEGIN_SRC emacs-lisp
       (use-package neotree
-        :defer t
         :ensure t
         :bind (([f8] . neotree-toggle))
         :config
@@ -273,7 +260,6 @@
 *** Line Numbers
     #+BEGIN_SRC emacs-lisp
       (use-package linum-relative
-        :defer t
         :ensure t
         :config
         (add-hook 'prog-mode-hook 'linum-relative-mode)
@@ -288,7 +274,6 @@
     #+BEGIN_SRC emacs-lisp
       ;; Projectile
       (use-package projectile
-        :defer t
         :ensure t
         :config
         (projectile-mode +1)
@@ -298,7 +283,6 @@
 *** Snippets
     #+BEGIN_SRC emacs-lisp
       (use-package yasnippet
-        :defer t
         :ensure t
         :config
         (use-package yasnippet-snippets
@@ -310,11 +294,9 @@
    #+BEGIN_SRC emacs-lisp
      ;; Javascript
      (use-package js2-mode
-       :defer t
        :ensure t
        :config 
        (use-package js2-refactor
-         :defer t
          :ensure t)
        (add-hook 'auto-mode-alist '("\\.js\\'" . js2-mode))
        (setq tab-width 2
@@ -324,7 +306,6 @@
 
      ;; Flycheck (mostly for eslint)
      (use-package flycheck
-       :defer t
        :ensure t
        :config
        (add-hook 'js2-mode-hook (lambda () (flycheck-mode 1)))
@@ -358,7 +339,6 @@
    #+BEGIN_SRC emacs-lisp
      ;; Virtualenv
      (use-package virtualenvwrapper
-       :defer t
        :ensure t
        :config
        (venv-initialize-eshell)
@@ -375,7 +355,6 @@
    #+BEGIN_SRC emacs-lisp
      ;; Centaur tabs
      (use-package centaur-tabs
-       :defer t
        :ensure t
        :config
        (centaur-tabs-mode 1)
@@ -417,7 +396,6 @@
 ** Auto Completion
    #+BEGIN_SRC emacs-lisp
      (use-package auto-complete
-       :defer t
        :ensure t
        :bind
        (:map ac-mode-map
@@ -441,7 +419,6 @@
     #+BEGIN_SRC emacs-lisp
       ;; Nyan Cat is the most important package of all
       (use-package nyan-mode
-        :defer t
         :ensure t
         :config
         (nyan-mode)
@@ -451,7 +428,6 @@
 *** 80 Column Display
     #+BEGIN_SRC emacs-lisp
       (use-package fill-column-indicator
-        :defer t
         :ensure t
         :config
         (setq fci-rule-width 3
@@ -463,6 +439,7 @@
       ;; Transparency
       (defvar alex/transparency-alpha 85)
       (set-frame-parameter (selected-frame) 'alpha alex/transparency-alpha)
+      (add-to-list 'default-frame-alist (cons 'alpha alex/transparency-alpha))
     #+END_SRC
 *** Color Theme
     #+BEGIN_SRC emacs-lisp
@@ -473,7 +450,6 @@
 *** Icons
     #+BEGIN_SRC emacs-lisp
       (use-package all-the-icons
-        :defer t
         :ensure t
         :config
         (let ((font-dest (cl-case window-system
@@ -488,7 +464,6 @@
 *** Show Indentation
     #+BEGIN_SRC emacs-lisp
       (use-package highlight-indentation
-        :defer t
         :ensure t
         :hook prog-mode-hook)
     #+END_SRC
@@ -543,7 +518,6 @@
 ** Get PATH
    #+BEGIN_SRC emacs-lisp
      (use-package exec-path-from-shell
-       :defer t
        :ensure t)
    #+END_SRC
 ** Process Management
@@ -569,11 +543,9 @@
 * Org
   #+BEGIN_SRC emacs-lisp
     (use-package org
-      :defer t
       :ensure t
       :config
       (use-package org-bullets
-        :defer t
         :ensure t)
 
       (add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
