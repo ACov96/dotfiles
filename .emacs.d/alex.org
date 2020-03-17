@@ -134,7 +134,7 @@
          "<SPC>" 'helm-M-x
          "m" 'delete-other-windows
          "B" 'balance-windows
-         "q" 'save-buffers-kill-emacs
+         "q" 'save-buffers-kill-terminal
          "b" 'helm-buffers-list
          "d" 'kill-this-buffer
          "x" 'delete-window
@@ -477,6 +477,16 @@
         (setq powerline-arrow-shape 'curve)
         (powerline-center-theme))
     #+END_SRC
+*** Centered Text
+    Sometimes it's nice to have text centered when you're writing a
+    lot (such as a LaTeX document).
+    #+BEGIN_SRC emacs-lisp
+      (use-package centered-window
+        :ensure t
+        :config
+        (add-hook 'text-mode-hook 'centered-window-mode))
+    #+END_SRC
+
 ** UTF-8
    #+BEGIN_SRC emacs-lisp
      (prefer-coding-system 'utf-8)
@@ -490,6 +500,14 @@
        :config
        (eyebrowse-mode t))
    #+END_SRC
+** Multiple Cursors
+   #+BEGIN_SRC emacs-lisp
+     (use-package multiple-cursors
+       :ensure t
+       :bind
+       (()))
+   #+END_SRC
+
 * Emacs Behaviors
 ** Dashboard
    Start-up splash screen.
@@ -546,6 +564,10 @@
    #+BEGIN_SRC emacs-lisp
      (fset 'yes-or-no-p 'y-or-n-p)
    #+END_SRC
+** Global Auto Revert
+   #+BEGIN_SRC emacs-lisp
+     (auto-revert-mode t)
+   #+END_SRC
 * Org
   #+BEGIN_SRC emacs-lisp
     (use-package org
@@ -555,15 +577,17 @@
         :ensure t)
 
       (add-hook 'org-mode-hook '(lambda () (setq fill-column 80)))
-      (add-hook 'org-mode-hook 'auto-fill-mode)
-      (add-hook 'org-mode-hook 'yas-minor-mode)
+      (add-hook 'org-mode-hook '(lambda () (auto-fill-mode t)))
+      (add-hook 'org-mode-hook '(lambda () (yas-minor-mode t)))
+      (add-hook 'org-mode-hook '(lambda () (centered-window-mode t)))
       (add-hook 'org-mode-hook '(lambda () (electric-pair-mode nil)))
       (add-hook 'org-mode-hook '(lambda () (company-mode nil)))
       (add-hook 'org-mode-hook '(lambda () (fci-mode t)))
       (add-hook 'org-mode-hook '(lambda () (org-bullets-mode 1)))
 
       ;; Setup agenda files
-      (setq org-agenda-files (list "/ssh:wwu:~/ta/agenda.org"))
+      (setq org-agenda-files (list "/ssh:wwu:~/ta/work.org"
+                                   "/ssh:wwu:~/class/school.org"))
 
       ;; Use current window when editing src blocks
       (setq org-src-window-setup 'current-window)
@@ -597,14 +621,23 @@
   #+END_SRC
 * Email
   #+BEGIN_SRC emacs-lisp
-    (setq gnus-select-method '(nnimap "wwu"
-                                      (nnimap-address "outlook.office365.com")
-                                      (nnimap-server-port 993)
-                                      (nnimap-stream ssl))
-          gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date)
-          message-send-mail-function 'smtpmail-send-it
-          smtpmail-default-smtp-server "smtp.office365.com"
-          smtpmail-smtp-service 587)
+    (use-package gnus
+      :config
+      (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+      (setq user-mail-address "covinga@wwu.edu"
+            user-full-name "Alex Covington"
+            gnus-select-method '(nnnil)
+            gnus-secondary-select-methods '((nnimap "wwu"
+                                                    (nnimap-address "outlook.office365.com")
+                                                    (nnimap-server-port 993)
+                                                    (nnimap-stream ssl)))
+            gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date)
+            gnus-mime-display-multipart-related-as-mixed t
+            gnus-auto-select-first nil
+            gnus-summary-display-arrow nil
+            message-send-mail-function 'smtpmail-send-it
+            smtpmail-default-smtp-server "smtp.office365.com"
+            smtpmail-smtp-service 587))
   #+END_SRC
 * Eshell
 ** Prompt
