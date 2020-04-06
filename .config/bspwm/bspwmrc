@@ -1,0 +1,25 @@
+#!/bin/bash
+. "${HOME}/.cache/wal/colors.sh"
+
+[ pidof sxhkd ] && killall sxhkd
+sxhkd &
+
+[ pidof lemonbar ] && killall lemonbar
+statusbar &
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+bspc config border_width 2
+bspc config window_gap 12
+
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_follows_mouse true
+bspc config normal_border_color "$color1"
+bspc config active_border_color "$color2"
+bspc config focused_border_color "$color15"
+bspc config presel_feedback_color "$color1"
+
+bspc rule -a emacs state=tiled
+bspc rule -a Emacs state=tiled
+bspc rule -a emacs@navi state=tiled

@@ -1,0 +1,38 @@
+super + Return
+      urxvt
+
+super + Tab
+      dmenu_run
+
+super + c
+      chromium
+
+super + z
+      emacsclient -c -a "" -e '(switch-to-buffer "*dashboard*")'
+
+super + shift + z
+      emacs
+
+super + shift + {q,r}
+      killall sxhkd; killall lemonbar; bspc {quit,wm -r}
+
+super + Escape
+      pkill -USR1 -x sxhkd
+
+super + {_,shift + }{h,j,k,l}
+      bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{1-9}
+      bspc {desktop -f,node -d} '^{1-9}'
+
+super + shift + c
+      bspc node -k
+
+XF86Audio{Raise,Lower}Volume
+      pactl set-sink-volume 0 {+,-}2%
+
+XF86AudioMute
+      pactl set-sink-mute 0 toggle
+
+super + {t,shift + t,f, shift + f}
+      bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
