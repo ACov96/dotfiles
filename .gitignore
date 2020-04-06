@@ -1,0 +1,5 @@
+.emacs.d/*/
+.emacs.d/tramp
+.emacs.d/ac-comphist.dat
+.emacs.d/recentf
+.emacs.d/projectile-bookmarks.eld
