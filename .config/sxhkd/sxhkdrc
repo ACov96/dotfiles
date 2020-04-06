@@ -8,7 +8,7 @@ super + c
       chromium
 
 super + z
-      emacsclient -c -a "" -e '(switch-to-buffer "*dashboard*")'
+      emacsclient -c -a "" -e "(progn (load-theme 'xresources t) (switch-to-buffer \"*dashboard*\"))"
 
 super + shift + z
       emacs
