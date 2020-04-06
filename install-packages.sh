@@ -2,11 +2,15 @@
 
 DOTFILES_REPO=~/.dotfiles
 
+install_yay() {
+    git clone https://aur.archlinux.org/yay.git ~/.local
+    cd ~/.local/yay
+    makepkg -si
+}
+
 # Update the system and make sure Yay is installed
 sudo pacman -Syu
-git clone https://aur.archlinux.org/yay.git ~/.local
-cd ~/.local/yay
-makepkg -si
+command -v yay >/dev/null 2>&1 || install_yay
 yay -Syu
 
 sudo pacman -S - < $DOTFILES_REPO/pacman.txt
