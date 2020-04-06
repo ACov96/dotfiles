@@ -1,0 +1,68 @@
+#!/bin/sh
+
+. "${HOME}/.cache/wal/colors.sh"
+
+# Basic colors
+BAR_COLORS="%{B#BB$(echo $color0 | sed 's/#//g')}%{F$color8}"
+
+# Helper functions
+clock() {
+	date "+%a %b %d %I:%M %p"
+}
+
+battery() {
+	echo "BAT: $(cat /sys/class/power_supply/BAT0/capacity)%%"
+}
+
+volume() {
+	echo "VOL: $(vol_per)"
+}
+
+wifi() {
+	if [ $(cat /sys/class/net/wlp3s0/carrier) -eq "1" ]; then
+		iwgetid | awk -F'"' '{print $2}'
+	else
+		echo "n/a"
+	fi
+}
+
+workspaces() {
+	for desktop in $(bspc query -D --names)
+	do
+		if [ $desktop == $(bspc query -D -d focused --names) ];
+		then
+			echo "%{R}%{O5}$desktop%{O5}%{R}"
+		else
+			echo $desktop
+		fi
+	done
+}
+
+current_window() {
+	xtitle
+}
+
+left() {
+    echo "$BAR_COLORS$(workspaces)"
+}
+
+center() {
+    [ -z $(current_window) ] && return 0
+    echo "%{R}%{O50}$(current_window)%{O50}%{R}"
+}
+
+right() {
+    echo "$BAR_COLORS $(volume) | $(battery) | $(wifi) | $(clock) "
+}
+
+feeder() {
+	while true;
+	do
+		BAR_INPUT="%{l}$(left)%{c}$(center)%{r}$(right)"
+		echo $BAR_INPUT
+		sleep 1s
+	done
+}
+
+feeder | lemonbar -p 
+

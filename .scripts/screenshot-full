@@ -1,0 +1,3 @@
+#!/bin/sh
+
+maim --delay=0.5 --quiet ~/.local/screenshots/$(date +%F%T).png

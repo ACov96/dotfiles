@@ -1,0 +1,13 @@
+#!/bin/bash
+
+STATE=$(upower -i $(upower -e | grep BAT0) | grep state | awk '{ print $2 }')
+
+if [[ "$STATE" = "discharging" ]];
+then
+	echo ""
+elif [[ "$STATE" = "fully-charged" ]];
+then
+	echo "FULL"
+else
+	echo "CHG"
+fi

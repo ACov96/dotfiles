@@ -1,0 +1,8 @@
+#!/bin/sh
+
+./autogen.sh
+./configure \
+    --prefix=$HOME/.local \
+    --with-xwidgets
+make -j $(nproc)
+make install -j $(nproc)
