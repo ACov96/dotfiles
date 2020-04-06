@@ -443,9 +443,9 @@
     #+END_SRC
 *** Color Theme
     #+BEGIN_SRC emacs-lisp
-      (use-package darkokai-theme
+      (use-package xresources-theme
         :ensure t
-        :config (load-theme 'darkokai t))
+        :config (load-theme 'xresources t))
     #+END_SRC
 *** Icons
     #+BEGIN_SRC emacs-lisp
@@ -483,8 +483,7 @@
     #+BEGIN_SRC emacs-lisp
       (use-package centered-window
         :ensure t
-        :config
-        (add-hook 'text-mode-hook 'centered-window-mode))
+        :config)
     #+END_SRC
 
 ** UTF-8
@@ -584,10 +583,6 @@
       (add-hook 'org-mode-hook '(lambda () (company-mode nil)))
       (add-hook 'org-mode-hook '(lambda () (fci-mode t)))
       (add-hook 'org-mode-hook '(lambda () (org-bullets-mode 1)))
-
-      ;; Setup agenda files
-      (setq org-agenda-files (list "/ssh:wwu:~/ta/work.org"
-                                   "/ssh:wwu:~/class/school.org"))
 
       ;; Use current window when editing src blocks
       (setq org-src-window-setup 'current-window)
