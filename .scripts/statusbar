@@ -5,6 +5,15 @@
 # Basic colors
 BAR_COLORS="%{B#BB$(echo $color0 | sed 's/#//g')}%{F$color8}"
 
+# Set default wireless device
+case $(hostname) in
+	"navi") WIRELESS_DEVICE=wlp3s0
+	       DESKTOP=false	;;
+	"makar") WIRELESS_DEVICE=wlp6s0
+	       DESKTOP=true	;;
+	*) WIRELESS_DEVICE= ;;
+esac
+
 # Helper functions
 clock() {
 	date "+%a %b %d %I:%M %p"
@@ -19,7 +28,7 @@ volume() {
 }
 
 wifi() {
-	if [ $(cat /sys/class/net/wlp3s0/carrier) -eq "1" ]; then
+	if [ $(cat /sys/class/net/${WIRELESS_DEVICE}/carrier) -eq "1" ]; then
 		iwgetid | awk -F'"' '{print $2}'
 	else
 		echo "n/a"
@@ -52,7 +61,11 @@ center() {
 }
 
 right() {
-    echo "$BAR_COLORS $(volume) | $(battery) | $(wifi) | $(clock) "
+	if [ $DESKTOP == true ]; then
+		echo "$BAR_COLORS $(volume) | $(wifi) | $(clock) "
+	else
+		echo "$BAR_COLORS $(volume) | $(battery) | $(wifi) | $(clock) "
+	fi
 }
 
 feeder() {
