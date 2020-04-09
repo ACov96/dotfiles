@@ -36,3 +36,9 @@ XF86AudioMute
 
 super + {t,shift + t,f, shift + f}
       bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + shift + b
+      emacsclient -c -a "" -e "(progn (load-theme 'xresources t) (find-file \"~/.config/bspwm/bspwmrc\"))"
+
+super + shift + Escape
+      emacsclient -c -a "" -e "(progn (load-theme 'xresources t) (find-file \"~/.config/sxhkd/sxhkdrc\"))"
