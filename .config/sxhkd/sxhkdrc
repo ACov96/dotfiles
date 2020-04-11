@@ -2,7 +2,7 @@ super + Return
       urxvt
 
 super + Tab
-      dmenu_run
+      launch_from_dmenu
 
 super + c
       chromium

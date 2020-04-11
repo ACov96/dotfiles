@@ -7,48 +7,53 @@ BAR_COLORS="%{B#BB$(echo $color0 | sed 's/#//g')}%{F$color8}"
 
 # Set default wireless device
 case $(hostname) in
-	"navi") WIRELESS_DEVICE=wlp3s0
-	       DESKTOP=false	;;
-	"makar") WIRELESS_DEVICE=wlp6s0
-	       DESKTOP=true	;;
-	*) WIRELESS_DEVICE= ;;
+    "navi") WIRELESS_DEVICE=wlp3s0
+            DESKTOP=false	;;
+    "makar") WIRELESS_DEVICE=wlp6s0
+             DESKTOP=true	;;
+    *) WIRELESS_DEVICE= ;;
 esac
 
 # Helper functions
 clock() {
-	date "+%a %b %d %I:%M %p"
+    date "+%a %b %d %I:%M %p"
 }
 
 battery() {
-	echo "BAT: $(cat /sys/class/power_supply/BAT0/capacity)%%"
+    echo "BAT: $(cat /sys/class/power_supply/BAT0/capacity)%%"
 }
 
 volume() {
-	echo "VOL: $(vol_per)"
+    echo "VOL: $(vol_per)"
 }
 
 wifi() {
-	if [ $(cat /sys/class/net/${WIRELESS_DEVICE}/carrier) -eq "1" ]; then
-		iwgetid | awk -F'"' '{print $2}'
-	else
-		echo "n/a"
-	fi
+    if [ $(cat /sys/class/net/${WIRELESS_DEVICE}/carrier) -eq "1" ]; then
+        iwgetid | awk -F'"' '{print $2}'
+    else
+        echo "n/a"
+    fi
 }
 
 workspaces() {
-	for desktop in $(bspc query -D --names)
-	do
-		if [ $desktop == $(bspc query -D -d focused --names) ];
-		then
-			echo "%{R}%{O5}$desktop%{O5}%{R}"
-		else
-			echo $desktop
-		fi
-	done
+    for desktop in $(bspc query -D --names)
+    do
+        if [ $desktop == $(bspc query -D -d focused --names) ];
+        then
+            echo "%{R}%{O5}$desktop%{O5}%{R}"
+        else
+            echo $desktop
+        fi
+    done
 }
 
 current_window() {
-	xtitle
+    CURRENT_TITLE=$(xtitle)
+    if [ $(echo $CURRENT_TITLE | wc -m) -gt 30 ]; then
+        echo "$(echo $CURRENT_TITLE | cut -c -30)..."
+    else
+        echo $CURRENT_TITLE
+    fi
 }
 
 left() {
@@ -61,20 +66,20 @@ center() {
 }
 
 right() {
-	if [ $DESKTOP == true ]; then
-		echo "$BAR_COLORS $(volume) | $(wifi) | $(clock) "
-	else
-		echo "$BAR_COLORS $(volume) | $(battery) | $(wifi) | $(clock) "
-	fi
+    if [ $DESKTOP == true ]; then
+        echo "$BAR_COLORS $(volume) | $(wifi) | $(clock) "
+    else
+        echo "$BAR_COLORS $(volume) | $(battery) | $(wifi) | $(clock) "
+    fi
 }
 
 feeder() {
-	while true;
-	do
-		BAR_INPUT="%{l}$(left)%{c}$(center)%{r}$(right)"
-		echo $BAR_INPUT
-		sleep 1s
-	done
+    while true;
+    do
+        BAR_INPUT="%{l}$(left)%{c}$(center)%{r}$(right)"
+        echo $BAR_INPUT
+        sleep 1s
+    done
 }
 
 feeder | lemonbar -p 
