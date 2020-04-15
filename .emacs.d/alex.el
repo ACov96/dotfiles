@@ -285,7 +285,10 @@
 
 (use-package xresources-theme
   :ensure t
-  :config (load-theme 'xresources t))
+  :config
+  (load-theme 'xresources t)
+  (add-hook 'after-make-frame-functions (lambda (frame) 
+                                          (load-theme 'xresources t))))
 
 (use-package all-the-icons
   :ensure t

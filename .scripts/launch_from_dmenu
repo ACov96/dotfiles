@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# This script prompts the user to launch a binary. It caches the most recent
+# 10 choices in ~/.local/.dmenu_cache.
+#
+# 1. Get the command.
+# 2. Cache doesn't exist, insert the command as the first line.
+# 3. Cache exists, command isn't in cache. Insert as first line.
+# 4. Cache exists and command is already in the cache. Remove the entry and
+#    re-insert as the first line.
+# 5. Only keep the most recent 10 entries.
+# 6. Actually run the command.
+
+DMENU_CACHE=~/.local/.dmenu_cache
+
+# 1
+DMENU_CMD=$(echo -e "$(cat $DMENU_CACHE)\n$(compgen -c)" | dmenu) 
+
+if [ !  -f $DMENU_CACHE  ]; then
+    # 2
+    echo $DMENU_CMD > $DMENU_CACHE
+elif [ $(grep $DMENU_CMD $DMENU_CACHE; echo $?) -eq 1 ]; then
+    # 3
+    sed -i "1 i $DMENU_CMD" $DMENU_CACHE
+else
+    # 4
+    sed -i "/$DMENU_CMD/ d" $DMENU_CACHE
+    sed -i "1 i $DMENU_CMD" $DMENU_CACHE
+fi
+
+# 5
+tail $DMENU_CACHE > $DMENU_CACHE.tmp
+mv $DMENU_CACHE{.tmp,}
+
+# 6
+exec $DMENU_CMD
