@@ -14,7 +14,7 @@ super + shift + z
       emacs
 
 super + shift + {q,r}
-      killall sxhkd; killall lemonbar; bspc {quit,wm -r}
+      {quit-bspwm,restart-bspwm}
 
 super + Escape
       pkill -USR1 -x sxhkd
