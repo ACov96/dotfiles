@@ -5,3 +5,4 @@ urxvt.depth: 32
 urxvt.clipboard.autocopy: true
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0200/c800
+urxvt.perl-ext-common: resize-font

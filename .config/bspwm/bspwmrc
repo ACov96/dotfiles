@@ -22,3 +22,5 @@ bspc config presel_feedback_color "$color1"
 
 bspc rule -a Emacs state=tiled
 bspc rule -a Zathura state=tiled
+bspc rule -a Zoom state=floating
+bspc rule -a zoom state=floating
