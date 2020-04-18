@@ -162,8 +162,8 @@
                    :map evil-visual-state-map
                    ("C-u" . evil-scroll-up)) 
        :config 
-       (evil-mode 1)
-       (evil-set-initial-state 'dashboard-mode 'emacs))
+       (evil-mode 1))
+       
 
      (use-package evil-surround
        :ensure t
