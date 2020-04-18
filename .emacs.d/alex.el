@@ -46,7 +46,8 @@
               :map evil-visual-state-map
               ("C-u" . evil-scroll-up)) 
   :config 
-  (evil-mode 1))
+  (evil-mode 1)
+  (evil-set-initial-state 'dashboard-mode 'emacs))
 
 (use-package evil-surround
   :ensure t
@@ -331,6 +332,7 @@
   :bind
   (()))
 
+(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 (use-package dashboard
   :ensure t
   :config
@@ -338,6 +340,8 @@
   (setq dashboard-startup-banner 'logo
         dashboard-set-heading-icons t
         dashboard-set-file-icons t
+        dashboard-show-shortcuts t
+        dashboard-items '((recents . 5) (projects . 5))
         dashboard-center-content t))
 
 ;; Detach the custom-file stuff from .emacs
