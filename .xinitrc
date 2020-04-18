@@ -5,6 +5,7 @@ compton \
     --backend glx \
     -f \
     -D 2 \
+    -i 0.9 \
     --blur-background \
     --blur-background-fixed \
     --blur-method kawase \
