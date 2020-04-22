@@ -1,7 +1,8 @@
 XTerm.termName: xterm-256color
-urxvt*font: xft:Hack:pixelsize=11
+urxvt*font: xft:Hack:pixelsize=11,xft:Symbola
+urxvt*locale: en_US.UTF-8
+urxvt*skipBuiltInGlyphs: true
 URxvt.scrollBar: false
-urxvt.depth: 32
 urxvt.clipboard.autocopy: true
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0200/c800

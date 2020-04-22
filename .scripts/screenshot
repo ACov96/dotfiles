@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mkdir -p ~/.local/screenshots
+import ~/.local/screenshots/$(date +%F%T).png

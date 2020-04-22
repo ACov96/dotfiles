@@ -5,7 +5,7 @@ super + Tab
       launch_from_dmenu
 
 super + c
-      chromium
+      firefox
 
 super + z
       emacsclient -c -a "" -e "(progn (load-theme 'xresources t))"
@@ -42,3 +42,9 @@ super + shift + b
 
 super + shift + Escape
       emacsclient -c -a "" -e "(progn (load-theme 'xresources t) (find-file \"~/.config/sxhkd/sxhkdrc\"))"
+
+super + p
+      screenshot
+
+super + shift + p
+      screenshot-full
