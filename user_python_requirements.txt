@@ -65,7 +65,7 @@ pywal==3.3.0
 PyYAML==5.3.1
 QDarkStyle==2.6.8
 qrcode==6.1
-qutebrowser==1.10.1
+qutebrowser==1.11.1
 ranger-fm==1.9.3
 Reflector==2020.3.21.11.40.36
 requests==2.23.0
