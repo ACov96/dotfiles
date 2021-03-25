@@ -62,7 +62,7 @@ PySocks==1.7.1
 python-xlib==0.26
 pytoml==0.1.21
 pywal==3.3.0
-PyYAML==5.3.1
+PyYAML==5.4
 QDarkStyle==2.6.8
 qrcode==6.1
 qutebrowser==1.10.1
