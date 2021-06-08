@@ -42,7 +42,7 @@ patiencediff==0.1.0
 pbkdf2==1.3
 pbr==5.4.4
 pep517==0.8.2
-Pillow==6.2.1
+Pillow==8.2.0
 ply==3.11
 progress==1.5
 protobuf==3.11.4
