@@ -22,7 +22,7 @@ dulwich==0.19.15
 ecdsa==0.15
 Electrum==3.3.8
 fastimport==0.9.8
-guake==3.7.0
+guake==3.8.5
 gunicorn==20.0.4
 html5lib==1.0.1
 idna==2.9
