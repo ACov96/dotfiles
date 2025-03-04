@@ -1,0 +1,607 @@
+#+TITLE: Alex's Emacs Configuration
+#+AUTHOR: Alex Covington
+
+My drop-in Emacs configuration. Please backup your .emacs/.emacs.d before setting anything up.
+
+The config isn't really intended to be modular or user-friendly, and there are a lot of dependencies intertwined with each other and generally highly coupled. There's just assumptions all over the place.
+
+If you need something like more configurable or with more support, I'd recommend [[https://www.spacemacs.org][Spacemacs]] or [[https://github.com/doomemacs/doomemacs][Doom Emacs]].
+
+Quickstart:
+
+#+begin_src sh
+  cd <home directory>
+  git clone https://github.com/ACov96/dotemacs.git .emacs.d
+#+end_src
+
+*NOTE FOR WINDOWS*
+
+Emacs will use =%USERPROFILE%\AppData\Roaming\.emacs.d= if you don't have the =%HOME%= environment variable set to =%USERPROFILE%=.
+
+* Table of Contents                                                   :TOC_4:
+- [[#package-management-setup-needs-to-be-first][Package Management Setup (*NEEDS TO BE FIRST*)]]
+- [[#the-alex-namespace][The =alex= Namespace]]
+  - [[#switch-color-themes][Switch Color Themes]]
+  - [[#check-os-platform][Check OS Platform]]
+  - [[#reload-emacs-configuration][Reload Emacs Configuration]]
+  - [[#open-emacs-configuration][Open Emacs Configuration]]
+  - [[#shell-helpers][=shell= Helpers]]
+- [[#appearance][Appearance]]
+  - [[#emacs-gui][Emacs GUI]]
+  - [[#color-theme][Color Theme]]
+  - [[#transparency][Transparency]]
+- [[#behaviors][Behaviors]]
+  - [[#startup][Startup]]
+  - [[#tabs][Tabs]]
+  - [[#parensbracketsquotes][Parens/Brackets/Quotes]]
+  - [[#line-numbers][Line Numbers]]
+  - [[#notification-sounds][Notification Sounds]]
+  - [[#scrolling][Scrolling]]
+- [[#packages][Packages]]
+  - [[#org-mode-configuration][=org-mode= Configuration]]
+    - [[#org-superstar----better-org-mode-bullets][=org-superstar= -- Better =org-mode= bullets]]
+    - [[#toc-org----table-of-contents][=toc-org= -- Table of Contents]]
+    - [[#org-appear][=org-appear=]]
+  - [[#magit----git-version-control][=magit= -- Git Version Control]]
+  - [[#dashboard----startup-dashboard][=dashboard= -- Startup Dashboard]]
+  - [[#all-the-icons----use-icons-for-files-and-directories][=all-the-icons= -- Use icons for files and directories]]
+  - [[#helm][Helm]]
+  - [[#evil-mode----vim-keybindings][=evil-mode= -- Vim keybindings]]
+    - [[#evil-org][=evil-org=]]
+  - [[#general----spacebar-leader-key][General -- Spacebar leader key]]
+  - [[#which-key----keybinding-reminders][=which-key= -- Keybinding reminders]]
+  - [[#emacs-emojify----emojis][=emacs-emojify= -- Emojis]]
+  - [[#ace-window----better-window-management][=ace-window= -- Better window management]]
+  - [[#powerline----better-modeline][=powerline= -- Better modeline]]
+  - [[#projectile----project-management][=projectile= -- Project Management]]
+  - [[#treemacs----file-tree-navigation][=treemacs= -- File tree navigation]]
+  - [[#olivetti][=olivetti=]]
+
+* Package Management Setup (*NEEDS TO BE FIRST*)
+
+=use-package= is important. It makes maintaining and managing packages and dependencies a breeze while keeping everything literate.
+
+#+begin_src emacs-lisp
+  (require 'package)
+  (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                           ("melpa" . "https://melpa.org/packages/")))
+  (package-initialize)
+
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+#+end_src
+
+* The =alex= Namespace
+
+I write my own utility functions and keep them under the =alex/*= namespace. 
+
+These helpers need to be defined before the rest of the config because other package options will depend on or setup shortcuts/keybindings to helpers.
+
+** Switch Color Themes
+
+Add some helper functions to switch between light and dark mode.
+
+#+begin_src emacs-lisp
+  (defun alex/dark-mode () (interactive)
+         (color-theme-sanityinc-tomorrow-night))
+
+  (defun alex/light-mode () (interactive)
+         (color-theme-sanityinc-tomorrow-day))
+#+end_src
+** Check OS Platform
+
+Helpers to check the current OS platform
+
+#+begin_src emacs-lisp
+  (defun alex/is-windows ()
+    (interactive)
+    (eq system-type 'windows-nt))
+  
+  (defun alex/is-linux ()
+    (interactive)
+    (eq system-type 'gnu/linux))
+#+end_src
+** Reload Emacs Configuration
+
+Reload the configuration. Useful if changes are made and the config needs to be reapplied without restarting Emacs.
+
+#+begin_src emacs-lisp
+  (defun alex/reload-config ()
+    (interactive)
+    (load user-init-file))
+#+end_src
+** Open Emacs Configuration
+
+Open this file (=config.org=) for editing.
+
+#+begin_src emacs-lisp
+  (defun alex/open-config ()
+    (interactive)
+    (find-file "~/.emacs.d/config.org"))
+#+end_src
+
+** =shell= Helpers
+
+=shell= is the most consistent/portable inferior shell mode for me. It works well enough on Windows/Linux that I can reasonably trust it to work anywhere with any shell.
+
+Windows Shells:
+- Command Prompt
+- PowerShell
+
+#+begin_src emacs-lisp
+  (when (alex/is-windows)
+    (defun alex/shell-cmd ()
+      (interactive)
+      (shell "*shell*" (executable-find "cmd.exe")))
+
+    (defun alex/shell-powershell ()
+      (interactive)
+      (setq explicit-powershell.exe-args '("-NoLogo" "-NoExit"))
+      (shell "*shell*" (executable-find "powershell.exe"))))
+#+end_src
+
+Linux Shells:
+- bash
+
+#+begin_src emacs-lisp
+  (when (alex/is-linux)
+    (defun alex/shell-bash ()
+      (interactive)
+      (shell "*shell*" (executable-find "bash"))))
+#+end_src
+
+My default shell based on which OS is currently running:
+- Windows: =powershell=
+- Linux: =bash=
+
+#+begin_src emacs-lisp
+  (defun alex/default-shell ()
+    (interactive)
+    (if (alex/is-windows)
+        (alex/shell-powershell)
+      (alex/shell-bash)))
+#+end_src
+
+* Appearance
+** Emacs GUI
+
+I don't like the look of the default Emac's menu and tool bars. Let's disable them.
+
+#+begin_src emacs-lisp
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+#+end_src
+
+Add line and column numbers to the modeline
+
+#+begin_src emacs-lisp
+  (line-number-mode t)
+  (column-number-mode t)
+  (size-indication-mode t)
+#+end_src
+
+** Color Theme
+
+Let's make the colors pretty.
+
+#+begin_src emacs-lisp
+  (use-package color-theme-sanityinc-tomorrow
+    :ensure t
+    :config
+    (color-theme-sanityinc-tomorrow-night))
+#+end_src
+
+** Transparency
+
+I like the look of transparent windows, it's cozy.
+
+I'm pretty sure this only works on Linux...
+
+#+begin_src emacs-lisp
+(when (alex/is-linux)
+  (add-to-list 'default-frame-alist '(alpha . (90 . 90))))
+#+end_src
+
+* Behaviors
+** Startup
+
+Don't show the default startup screen. We'll configure that later.
+
+#+begin_src emacs-lisp
+  (setq inhibit-startup-screen t
+        inhibit-startup-message t)
+#+end_src
+
+** Tabs
+
+Don't use tabs.
+
+#+begin_src emacs-lisp
+  (setq-default indent-tabs-mode nil)
+#+end_src
+
+** Parens/Brackets/Quotes
+
+Auto-insert matching parens/brackets/quotes
+
+#+begin_src emacs-lisp
+  (electric-pair-mode)
+#+end_src
+
+** Line Numbers
+
+Always show line numbers in programming modes
+
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+#+end_src
+
+** Notification Sounds
+
+Turn off the bell noise
+
+#+begin_src emacs-lisp
+  (setq visible-bell 1)
+#+end_src
+
+** Scrolling
+
+Don't jump around when scrolling, just scroll one line at a time.
+
+#+begin_src emacs-lisp
+  (setq scroll-step 1
+        scroll-conservatively 10000)
+#+end_src
+
+* Packages
+** =org-mode= Configuration
+
+=org-mode= is the driving force of organizing life with Emacs. Let's make it functional and good looking.
+
+Initialization (needed to make sure =org-mode-hook= fires):
+
+#+begin_src emacs-lisp
+  (use-package org
+    :ensure t
+    :hook
+    (text-mode . visual-line-mode)
+    :custom
+    (org-startup-indented t)
+    (org-hide-emphasis-markers 1)
+    :config
+    ;; Disable auto-indentation in org-mode, conflicts with evil-mode
+    (add-hook 'org-mode-hook (lambda () (electric-indent-local-mode -1)))
+    (add-hook 'electric-indent-functions (lambda (x) (when (eq 'org-mode major-mode) 'no-indent))))
+#+end_src
+
+*** =org-superstar= -- Better =org-mode= bullets
+#+begin_src emacs-lisp
+  (use-package org-superstar
+    :ensure t
+    :config
+    (setq org-superstar-special-todo-items t)
+    (add-hook 'org-mode-hook (lambda ()
+                               (org-superstar-mode 1))))
+#+end_src
+
+*** =toc-org= -- Table of Contents
+
+Keep the Table of Contents up-to-date automagically.
+
+#+begin_src emacs-lisp
+  (use-package toc-org
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook 'toc-org-mode))
+#+end_src
+
+*** =org-appear=
+
+Make it easier to edit the wrappers around text while in =ord-mode=.
+
+#+begin_src emacs-lisp
+  (use-package org-appear
+    :ensure t
+    :after org
+    :config
+    (add-hook 'org-mode-hook 'org-appear-mode))
+#+end_src
+
+** =magit= -- Git Version Control
+
+=magit= is a great Git wrapper.
+
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t)
+#+end_src
+
+** =dashboard= -- Startup Dashboard
+
+A better startup dashboard for Emacs.
+
+#+begin_src emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :after (all-the-icons projectile)
+    :config
+    (dashboard-setup-startup-hook)
+    (setq dashboard-center-content t
+          dashboard-banner-logo-title "Alex's Emacs"
+          dashboard-startup-banner 'logo
+          dashboard-items '((recents . 5)
+                            (projects . 5)
+                            (agenda . 5)
+                            (bookmarks . 5))
+          dashboard-set-heading-icons t
+          dashboard-set-file-icons t
+          dashboard-set-init-info t))
+#+end_src
+
+** =all-the-icons= -- Use icons for files and directories
+
+This is another beautification package.
+
+#+begin_src emacs-lisp
+  (use-package all-the-icons
+    :ensure t
+    :if (display-graphic-p))
+#+end_src
+
+** Helm
+
+Better incremental function search by using [[https://emacs-helm.github.io/helm/][Helm]].
+
+#+begin_src emacs-lisp
+  (use-package helm
+    :ensure t
+    :config
+    (helm-mode 1)
+    (global-set-key (kbd "M-x") 'helm-M-x))
+#+end_src
+
+** =evil-mode= -- Vim keybindings
+
+Vim keybindings, please.
+
+#+begin_src emacs-lisp
+  (use-package evil
+    :ensure t
+    :config
+    (evil-mode 1)
+    (evil-set-leader 'motion (kbd "SPC"))
+    (evil-define-key 'normal 'global (kbd "<leader>f") 'helm-find-files)
+    (evil-set-initial-state 'eshell-mode 'emacs)
+    (evil-set-initial-state 'shell-mode 'emacs)
+    (evil-set-initial-state 'slime-mode 'emacs))
+#+end_src
+
+*** =evil-org= 
+=evil-mode= doesn't always work well with =org-mode=, let's use =evil-org= to fix that.
+
+#+begin_src emacs-lisp
+  (use-package evil-org
+    :ensure t
+    :after org
+    :config
+    (require 'evil-org-agenda)
+    (add-hook 'org-mode-hook 'evil-org-mode)
+    (evil-org-agenda-set-keys))
+#+end_src
+
+** General -- Spacebar leader key
+
+Stealing the idea from Spacemacs, let's use the spacebar as a leader key to make using the editor more ergonomic and efficient.
+
+This is the main section of keybindings for the config. Good luck!
+
+#+begin_src emacs-lisp
+  (use-package general
+    :ensure t
+    :config
+    (require 'general)
+    (general-evil-setup t)
+    (nvmap :prefix "SPC"
+      "f" 'helm-find-files
+      "/" 'split-window-right
+      "_" 'split-window-below
+      "`" 'alex/default-shell
+      "+" 'text-scale-increase
+      "-" 'text-scale-decrease
+      "b" 'helm-buffers-list
+      "s" 'save-buffer
+      "d" 'delete-window
+      "k" 'kill-buffer
+      "w" 'ace-window
+      "t" 'treemacs
+      "T" 'treemacs-select-window
+      "SPC" 'helm-M-x))
+#+end_src
+
+** =which-key= -- Keybinding reminders
+
+There are a lot of keybindings, =which-key= can help remind us which keybinds are available as we go.
+
+#+begin_src emacs-lisp
+  (use-package which-key
+    :ensure t
+    :config
+    (which-key-mode))
+#+end_src
+
+** =emacs-emojify= -- Emojis
+
+Who doesn't love emojis? ☺
+
+#+begin_src emacs-lisp
+  (use-package emojify
+    :ensure t
+    :hook (after-init . global-emojify-mode))
+#+end_src
+
+** =ace-window= -- Better window management
+
+Better window navigation and management
+
+#+begin_src emacs-lisp
+  (use-package ace-window
+    :ensure t)
+#+end_src
+
+** =powerline= -- Better modeline
+
+Improve the modeline with =powerline=
+
+#+begin_src emacs-lisp
+  (use-package powerline
+    :ensure t
+    :config
+    (powerline-default-theme))
+#+end_src
+
+** =projectile= -- Project Management
+
+Use =projectile= for project management
+
+#+begin_src emacs-lisp
+  (use-package projectile
+    :ensure t
+    :init
+    (projectile-mode +1))
+#+end_src
+
+** =treemacs= -- File tree navigation
+
+#+begin_src emacs-lisp
+  (use-package treemacs
+    :ensure t
+    :defer t
+    :init
+    (with-eval-after-load 'winum
+      (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+    :config
+    (progn
+      (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
+            treemacs-deferred-git-apply-delay        0.5
+            treemacs-directory-name-transformer      #'identity
+            treemacs-display-in-side-window          t
+            treemacs-eldoc-display                   'simple
+            treemacs-file-event-delay                2000
+            treemacs-file-extension-regex            treemacs-last-period-regex-value
+            treemacs-file-follow-delay               0.2
+            treemacs-file-name-transformer           #'identity
+            treemacs-follow-after-init               t
+            treemacs-expand-after-init               t
+            treemacs-find-workspace-method           'find-for-file-or-pick-first
+            treemacs-git-command-pipe                ""
+            treemacs-goto-tag-strategy               'refetch-index
+            treemacs-header-scroll-indicators        '(nil . "^^^^^^")
+            treemacs-hide-dot-git-directory          t
+            treemacs-indentation                     2
+            treemacs-indentation-string              " "
+            treemacs-is-never-other-window           nil
+            treemacs-max-git-entries                 5000
+            treemacs-missing-project-action          'ask
+            treemacs-move-files-by-mouse-dragging    t
+            treemacs-move-forward-on-expand          nil
+            treemacs-no-png-images                   nil
+            treemacs-no-delete-other-windows         t
+            treemacs-project-follow-cleanup          nil
+            treemacs-persist-file                    (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+            treemacs-position                        'left
+            treemacs-read-string-input               'from-child-frame
+            treemacs-recenter-distance               0.1
+            treemacs-recenter-after-file-follow      nil
+            treemacs-recenter-after-tag-follow       nil
+            treemacs-recenter-after-project-jump     'always
+            treemacs-recenter-after-project-expand   'on-distance
+            treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
+            treemacs-project-follow-into-home        nil
+            treemacs-show-cursor                     nil
+            treemacs-show-hidden-files               t
+            treemacs-silent-filewatch                nil
+            treemacs-silent-refresh                  nil
+            treemacs-sorting                         'alphabetic-asc
+            treemacs-select-when-already-in-treemacs 'move-back
+            treemacs-space-between-root-nodes        t
+            treemacs-tag-follow-cleanup              t
+            treemacs-tag-follow-delay                1.5
+            treemacs-text-scale                      nil
+            treemacs-user-mode-line-format           nil
+            treemacs-user-header-line-format         nil
+            treemacs-wide-toggle-width               70
+            treemacs-width                           35
+            treemacs-width-increment                 1
+            treemacs-width-is-initially-locked       t
+            treemacs-workspace-switch-cleanup        nil)
+
+      ;; The default width and height of the icons is 22 pixels. If you are
+      ;; using a Hi-DPI display, uncomment this to double the icon size.
+      ;;(treemacs-resize-icons 44)
+
+      (treemacs-follow-mode t)
+      (treemacs-filewatch-mode t)
+      (treemacs-fringe-indicator-mode 'always)
+      (when treemacs-python-executable
+        (treemacs-git-commit-diff-mode t))
+
+      (pcase (cons (not (null (executable-find "git")))
+                   (not (null treemacs-python-executable)))
+        (`(t . t)
+         (treemacs-git-mode 'deferred))
+        (`(t . _)
+         (treemacs-git-mode 'simple)))
+
+      (treemacs-hide-gitignored-files-mode nil))
+    :bind
+    (:map global-map
+          ("M-0"       . treemacs-select-window)
+          ("C-x t 1"   . treemacs-delete-other-windows)
+          ("C-x t t"   . treemacs)
+          ("C-x t d"   . treemacs-select-directory)
+          ("C-x t B"   . treemacs-bookmark)
+          ("C-x t C-t" . treemacs-find-file)
+          ("C-x t M-t" . treemacs-find-tag)))
+
+  (use-package treemacs-evil
+    :after (treemacs evil)
+    :ensure t)
+
+  (use-package treemacs-projectile
+    :after (treemacs projectile)
+    :ensure t)
+
+  (use-package treemacs-icons-dired
+    :hook (dired-mode . treemacs-icons-dired-enable-once)
+    :ensure t)
+
+  (use-package treemacs-magit
+    :after (treemacs magit)
+    :ensure t)
+
+  (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
+    :after (treemacs persp-mode) ;;or perspective vs. persp-mode
+    :ensure t
+    :config (treemacs-set-scope-type 'Perspectives))
+
+  (use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
+    :after (treemacs)
+    :ensure t
+    :config (treemacs-set-scope-type 'Tabs))
+
+  ;; (treemacs-start-on-boot)
+#+end_src
+
+** =olivetti=
+
+Sometimes it's nice to write prose with a centered window. =olivetti= is a pretty neat package to do that.
+
+#+begin_src emacs-lisp
+  (use-package olivetti
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook 'olivetti-mode)
+    (setq olivetti-body-width 120))
+#+end_src
+
